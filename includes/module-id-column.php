@@ -42,36 +42,28 @@ add_filter( 'manage_edit-post_sortable_columns', 'seowk_make_id_column_sortable'
 add_filter( 'manage_edit-page_sortable_columns', 'seowk_make_id_column_sortable' );
 add_filter( 'manage_upload_sortable_columns', 'seowk_make_id_column_sortable' );
 
-function seowk_id_column_css() {
-    echo '<style>
-        .column-seowk_id { width: 60px !important; text-align: center; }
+function seowk_id_column_enqueue_assets( $hook_suffix ) {
+    if ( 'edit.php' !== $hook_suffix && 'upload.php' !== $hook_suffix ) {
+        return;
+    }
+
+    seowk_add_inline_admin_css(
+        '.column-seowk_id { width: 60px !important; text-align: center; }
         @media screen and (max-width: 782px) { .column-seowk_id { display: none; } }
         .column-seowk_id strong { cursor: pointer; }
-        .column-seowk_id strong:hover { color: #135e96; }
-    </style>';
-}
-add_action( 'admin_head', 'seowk_id_column_css' );
+        .column-seowk_id strong:hover { color: #135e96; }'
+    );
 
-function seowk_id_column_quick_copy_js() {
-    /* translators: %s: post ID */
-    $title = __( 'Click to copy: %s', 'wunderkiste-toolkit' );
-    ?>
-    <script>
-    jQuery(document).ready(function($) {
-        var copyTitle = <?php echo wp_json_encode( $title ); ?>;
-        $('.column-seowk_id strong').each(function() {
-            var $this = $(this), id = $this.text();
-            $this.attr('title', copyTitle.replace('%s', id));
-            $this.on('click', function(e) {
-                e.preventDefault();
-                if (navigator.clipboard) { navigator.clipboard.writeText(id); }
-                var orig = $this.text();
-                $this.text('✓').css('color', '#00a32a');
-                setTimeout(function() { $this.text(orig).css('color', '#2271b1'); }, 1000);
-            });
-        });
-    });
-    </script>
-    <?php
+    wp_enqueue_script( 'seowk-id-column', SEOWK_PLUGIN_URL . 'assets/js/id-column.js', array( 'jquery' ), SEOWK_VERSION, true );
+    wp_add_inline_script(
+        'seowk-id-column',
+        'window.seowkIdColumn = ' . wp_json_encode(
+            array(
+                /* translators: %s: post ID */
+                'copyTitle' => __( 'Click to copy: %s', 'wunderkiste-toolkit' ),
+            )
+        ) . ';',
+        'before'
+    );
 }
-add_action( 'admin_footer', 'seowk_id_column_quick_copy_js' );
+add_action( 'admin_enqueue_scripts', 'seowk_id_column_enqueue_assets' );

@@ -28,7 +28,9 @@ function seowk_fill_media_columns( $column_name, $post_id ) {
 }
 add_action( 'manage_media_custom_column', 'seowk_fill_media_columns', 10, 2 );
 
-function seowk_media_columns_css() {
-    echo '<style>.column-seowk_filesize, .column-seowk_dimensions { width: 100px; }</style>';
+function seowk_media_columns_css( $hook_suffix ) {
+    if ( 'upload.php' === $hook_suffix ) {
+        seowk_add_inline_admin_css( '.column-seowk_filesize, .column-seowk_dimensions { width: 100px; }' );
+    }
 }
-add_action('admin_head', 'seowk_media_columns_css');
+add_action( 'admin_enqueue_scripts', 'seowk_media_columns_css' );

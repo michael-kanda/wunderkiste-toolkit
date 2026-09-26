@@ -63,6 +63,20 @@ function seowk_is_module_active( $module_key ) {
     return ! empty( $options[ $module_key ] );
 }
 
+/**
+ * Adds a small CSS snippet to the admin page through a registered handle
+ * instead of echoing a <style> tag. Call during admin_enqueue_scripts.
+ *
+ * @param string $css CSS rules.
+ */
+function seowk_add_inline_admin_css( $css ) {
+    if ( ! wp_style_is( 'seowk-admin', 'registered' ) ) {
+        wp_register_style( 'seowk-admin', false, array(), SEOWK_VERSION );
+    }
+    wp_enqueue_style( 'seowk-admin' );
+    wp_add_inline_style( 'seowk-admin', $css );
+}
+
 /* ------------------------------------------------------------------------- *
  * LOAD ADMIN SETTINGS
  * ------------------------------------------------------------------------- */
@@ -227,40 +241,6 @@ function seowk_set_activation_transient() {
     set_transient( 'seowk_activation_notice', true, 5 );
 }
 register_activation_hook( __FILE__, 'seowk_set_activation_transient' );
-
-/* ------------------------------------------------------------------------- *
- * DEBUG INFO (admins only)
- * ------------------------------------------------------------------------- */
-
-function seowk_admin_footer_debug() {
-    // Only in debug mode - client installs should not get console noise
-    // injected into every single admin screen.
-    if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
-        return;
-    }
-
-    if ( ! current_user_can( 'manage_options' ) ) {
-        return;
-    }
-
-    $seowk_opts = seowk_get_options();
-    $active_modules = array_filter( $seowk_opts, function( $value, $key ) {
-        return strpos( $key, 'seowk_enable_' ) === 0 || strpos( $key, 'seowk_disable_' ) === 0;
-    }, ARRAY_FILTER_USE_BOTH );
-    $active_modules = array_filter( $active_modules );
-    $module_count = count( $active_modules );
-
-    ?>
-    <script>
-    console.log('%c🎯 Wunderkiste Toolkit v<?php echo esc_js( SEOWK_VERSION ); ?>', 'background: #2271b1; color: white; padding: 5px 10px; border-radius: 3px;');
-    console.log('<?php echo esc_js( __( 'Active modules:', 'wunderkiste-toolkit' ) ); ?> <?php echo esc_js( (string) $module_count ); ?>');
-    <?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) : ?>
-    console.log('Module:', <?php echo wp_json_encode( array_keys( $active_modules ) ); ?>);
-    <?php endif; ?>
-    </script>
-    <?php
-}
-add_action( 'admin_footer', 'seowk_admin_footer_debug' );
 
 /* ------------------------------------------------------------------------- *
  * MODULE OVERVIEW FOR DEVELOPERS

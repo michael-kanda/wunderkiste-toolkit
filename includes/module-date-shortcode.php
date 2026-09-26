@@ -71,18 +71,49 @@ function seowk_date_shortcode( $atts ) {
     return seowk_generate_date_output( $atts );
 }
 add_shortcode( 'seowk_date', 'seowk_date_shortcode' );
-add_shortcode( 'datum', 'seowk_date_shortcode' );
 
-function seowk_jahr_shortcode( $atts ) {
+function seowk_year_shortcode( $atts ) {
     $atts = is_array( $atts ) ? $atts : array();
     $atts['format'] = 'year';
     return seowk_date_shortcode( $atts );
 }
-add_shortcode( 'jahr', 'seowk_jahr_shortcode' );
+add_shortcode( 'seowk_year', 'seowk_year_shortcode' );
 
-function seowk_monat_shortcode( $atts ) {
+function seowk_month_shortcode( $atts ) {
     $atts = is_array( $atts ) ? $atts : array();
     $atts['format'] = 'month';
     return seowk_date_shortcode( $atts );
 }
-add_shortcode( 'monat', 'seowk_monat_shortcode' );
+add_shortcode( 'seowk_month', 'seowk_month_shortcode' );
+
+/*
+ * Legacy aliases [datum], [jahr] and [monat] from earlier versions. The names
+ * are generic enough to clash with other plugins, so they are opt-in and never
+ * replace a shortcode another plugin already registered.
+ */
+function seowk_legacy_date_shortcodes_enabled() {
+    $options = seowk_get_options();
+    // Settings saved before 2.12 do not have this key yet: those sites already
+    // used the old names, so they keep working until the setting is saved.
+    if ( ! array_key_exists( 'seowk_date_legacy_shortcodes', $options ) ) {
+        return true;
+    }
+    return ! empty( $options['seowk_date_legacy_shortcodes'] );
+}
+
+function seowk_register_legacy_date_shortcodes() {
+    if ( ! seowk_legacy_date_shortcodes_enabled() ) {
+        return;
+    }
+    $legacy = array(
+        'datum' => 'seowk_date_shortcode',
+        'jahr'  => 'seowk_year_shortcode',
+        'monat' => 'seowk_month_shortcode',
+    );
+    foreach ( $legacy as $tag => $callback ) {
+        if ( ! shortcode_exists( $tag ) ) {
+            add_shortcode( $tag, $callback );
+        }
+    }
+}
+add_action( 'init', 'seowk_register_legacy_date_shortcodes', 20 );

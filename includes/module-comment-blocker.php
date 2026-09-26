@@ -117,6 +117,6 @@ function seowk_disable_comments_widget() {
 add_action( 'widgets_init', 'seowk_disable_comments_widget' );
 
 function seowk_hide_comments_admin_css() {
-    echo '<style>.column-comments { display: none !important; }</style>';
+    seowk_add_inline_admin_css( '.column-comments { display: none !important; }' );
 }
-add_action( 'admin_head', 'seowk_hide_comments_admin_css' );
+add_action( 'admin_enqueue_scripts', 'seowk_hide_comments_admin_css' );

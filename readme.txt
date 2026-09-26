@@ -1,5 +1,5 @@
 === Wunderkiste Toolkit ===
-Contributors: michaelkanda
+Contributors: michaelmedientechnik
 Tags: seo, schema, svg, image resize, lightbox
 Requires at least: 6.3
 Tested up to: 7.1
@@ -81,7 +81,7 @@ Shows a sortable ID column for posts, pages, media and custom post types. Click 
 = Content Tools =
 
 **Date Shortcode**
-Prints the current date: `[seowk_date]`, plus the aliases `[datum]`, `[jahr]` (year) and `[monat]` (month).
+Prints the current date: `[seowk_date]`, `[seowk_year]` and `[seowk_month]`. The shorter names `[datum]`, `[jahr]` and `[monat]` from earlier versions can be switched on under "Additional settings"; they are never registered if another plugin already uses them.
 
 Attributes: `format` (presets such as `numeric`, `full`, `full_day`, `month_year`, `iso`, `us`, `datetime`, or any PHP date format), `timezone`, `prefix`, `suffix`, `wrapper` (span, time, div, p, strong, em), `class`, `lang` (month and day names follow the site language by default; `de` or `en` forces a language).
 
@@ -149,6 +149,10 @@ Yes. A German translation (de_DE and de_AT) is included, and the interface switc
 * The interface is now English, with a bundled German translation (de_DE, de_AT) for PHP and JavaScript strings.
 * Date shortcode: month and day names follow the site language by default; `lang="de"` or `lang="en"` still forces a language.
 * The lightbox no longer loads wp-i18n on the frontend.
+* New prefixed shortcodes `[seowk_year]` and `[seowk_month]`. `[datum]`, `[jahr]` and `[monat]` are now optional (setting "Legacy date shortcodes"); sites that used them before keep them enabled.
+* All admin and frontend scripts and styles are enqueued properly instead of being printed inline (resizer, ID column, Quick Edit, conversion tracking, column styles). JSON-LD uses `wp_print_inline_script_tag()`.
+* The debug console output in the admin was removed.
+* Semantic block titles are translatable.
 * readme rewritten in English.
 
 = 2.11 =

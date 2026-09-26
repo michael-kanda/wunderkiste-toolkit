@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-26T06:12:27+00:00\n"
+"POT-Creation-Date: 2026-09-26T10:37:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wunderkiste-toolkit\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: wunderkiste-toolkit.php:3
 #: includes/admin-settings.php:11
-#: includes/admin-settings.php:238
+#: includes/admin-settings.php:254
 msgid "Wunderkiste Toolkit"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgid "Active modules"
 msgstr ""
 
 #: includes/admin-settings.php:36
-#: wunderkiste-toolkit.php:254
+#: wunderkiste-toolkit.php:252
 msgid "SEO Meta Settings"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgid "Extended meta tags per page: title, description, Open Graph, Twitter Card
 msgstr ""
 
 #: includes/admin-settings.php:37
-#: wunderkiste-toolkit.php:255
+#: wunderkiste-toolkit.php:253
 msgid "SEO Schema (JSON-LD)"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgid "Adds an input field for structured data."
 msgstr ""
 
 #: includes/admin-settings.php:38
-#: wunderkiste-toolkit.php:256
+#: wunderkiste-toolkit.php:254
 msgid "Bulk NoIndex Manager"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgid "Set or remove NoIndex for many posts at once."
 msgstr ""
 
 #: includes/admin-settings.php:39
-#: wunderkiste-toolkit.php:257
+#: wunderkiste-toolkit.php:255
 msgid "SEO Zombie Killer"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid "Redirects empty attachment pages to their posts (301)."
 msgstr ""
 
 #: includes/admin-settings.php:40
-#: wunderkiste-toolkit.php:258
+#: wunderkiste-toolkit.php:256
 msgid "Conversion Tracker"
 msgstr ""
 
@@ -95,7 +95,7 @@ msgid "Enables GA4 and Google Ads conversion tracking."
 msgstr ""
 
 #: includes/admin-settings.php:43
-#: wunderkiste-toolkit.php:261
+#: wunderkiste-toolkit.php:259
 msgid "Image Resizer (800px/1200px)"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgid "Button in the media details to scale images (92% quality)."
 msgstr ""
 
 #: includes/admin-settings.php:44
-#: wunderkiste-toolkit.php:262
+#: wunderkiste-toolkit.php:260
 msgid "Upload Cleaner"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgid "Automatically clean file names on upload."
 msgstr ""
 
 #: includes/admin-settings.php:45
-#: wunderkiste-toolkit.php:263
+#: wunderkiste-toolkit.php:261
 msgid "Zero-Click Image SEO"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgid "Generate title and alt text from the file name."
 msgstr ""
 
 #: includes/admin-settings.php:46
-#: wunderkiste-toolkit.php:264
+#: wunderkiste-toolkit.php:262
 msgid "Media Inspector"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgid "Shows file size and pixel dimensions in the media library."
 msgstr ""
 
 #: includes/admin-settings.php:47
-#: wunderkiste-toolkit.php:265
+#: wunderkiste-toolkit.php:263
 msgid "SVG Upload Support"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgid "Allows SVG uploads with security sanitization."
 msgstr ""
 
 #: includes/admin-settings.php:48
-#: wunderkiste-toolkit.php:266
+#: wunderkiste-toolkit.php:264
 msgid "Decent Lightbox"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgid "Lightweight image lightbox, enabled per image in the media library (vanil
 msgstr ""
 
 #: includes/admin-settings.php:51
-#: wunderkiste-toolkit.php:269
+#: wunderkiste-toolkit.php:267
 msgid "Emoji Bloat Remover"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgid "Removes the WordPress emoji scripts for faster page loads."
 msgstr ""
 
 #: includes/admin-settings.php:54
-#: wunderkiste-toolkit.php:272
+#: wunderkiste-toolkit.php:270
 msgid "XML-RPC Blocker"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgid "Closes the XML-RPC interface."
 msgstr ""
 
 #: includes/admin-settings.php:55
-#: wunderkiste-toolkit.php:273
+#: wunderkiste-toolkit.php:271
 msgid "Login Guard"
 msgstr ""
 
@@ -184,7 +184,7 @@ msgid "Your secret word. Afterwards you can only log in via <code>wp-login.php?Y
 msgstr ""
 
 #: includes/admin-settings.php:69
-#: wunderkiste-toolkit.php:274
+#: wunderkiste-toolkit.php:272
 msgid "Comment Blocker"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgid "Disables comments site-wide."
 msgstr ""
 
 #: includes/admin-settings.php:70
-#: wunderkiste-toolkit.php:275
+#: wunderkiste-toolkit.php:273
 msgid "ID Column Display"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "Shows the post/page/media ID in all list tables."
 msgstr ""
 
 #: includes/admin-settings.php:73
-#: wunderkiste-toolkit.php:278
+#: wunderkiste-toolkit.php:276
 msgid "Date Shortcode"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 
 #: includes/admin-settings.php:74
 #: includes/module-semantic-blocks.php:18
-#: wunderkiste-toolkit.php:279
+#: wunderkiste-toolkit.php:277
 msgid "Semantic Blocks"
 msgstr ""
 
@@ -232,48 +232,56 @@ msgstr ""
 msgid "Currency code for GA4 and Google Ads conversion tracking."
 msgstr ""
 
-#: includes/admin-settings.php:148
+#: includes/admin-settings.php:99
+msgid "Legacy date shortcodes"
+msgstr ""
+
+#: includes/admin-settings.php:107
+msgid "Also register [datum], [jahr] and [monat] from earlier versions (Date Shortcode module). New content should use [seowk_date], [seowk_year] and [seowk_month]."
+msgstr ""
+
+#: includes/admin-settings.php:163
 msgid "Choose the tools you want to enable."
 msgstr ""
 
-#: includes/admin-settings.php:152
+#: includes/admin-settings.php:167
 msgid "Further options for active modules."
 msgstr ""
 
-#: includes/admin-settings.php:176
+#: includes/admin-settings.php:192
 msgid "long, random word"
 msgstr ""
 
-#: includes/admin-settings.php:223
+#: includes/admin-settings.php:239
 msgid "Filter:"
 msgstr ""
 
-#: includes/admin-settings.php:243
+#: includes/admin-settings.php:259
 msgid "Your modular all-in-one toolkit for SEO, performance and administration."
 msgstr ""
 
-#: includes/admin-settings.php:247
+#: includes/admin-settings.php:263
 msgid "How it works:"
 msgstr ""
 
-#: includes/admin-settings.php:249
+#: includes/admin-settings.php:265
 msgid "Enable only the modules you really need"
 msgstr ""
 
-#: includes/admin-settings.php:250
+#: includes/admin-settings.php:266
 msgid "Every module works independently and efficiently"
 msgstr ""
 
-#: includes/admin-settings.php:251
+#: includes/admin-settings.php:267
 msgid "All modules are disabled by default"
 msgstr ""
 
-#: includes/admin-settings.php:259
+#: includes/admin-settings.php:275
 msgid "Save settings"
 msgstr ""
 
 #. translators: %s: author name
-#: includes/admin-settings.php:268
+#: includes/admin-settings.php:284
 #, php-format
 msgid "Made with ❤️ by %s"
 msgstr ""
@@ -351,7 +359,7 @@ msgstr ""
 msgid "Indexed by search engines"
 msgstr ""
 
-#: includes/module-bulk-noindex.php:167
+#: includes/module-bulk-noindex.php:176
 msgid "NoIndex (do not index)"
 msgstr ""
 
@@ -404,16 +412,16 @@ msgstr ""
 msgid "Currency: %s (can be changed in the plugin settings)"
 msgstr ""
 
-#: includes/module-conversion-tracker.php:261
+#: includes/module-conversion-tracker.php:249
 msgid "GA4 conversion active"
 msgstr ""
 
-#: includes/module-conversion-tracker.php:265
+#: includes/module-conversion-tracker.php:253
 msgid "Google Ads conversion active"
 msgstr ""
 
 #. translators: %s: post ID
-#: includes/module-id-column.php:57
+#: includes/module-id-column.php:63
 #, php-format
 msgid "Click to copy: %s"
 msgstr ""
@@ -534,53 +542,53 @@ msgstr ""
 msgid "successful"
 msgstr ""
 
-#: includes/module-resizer.php:254
+#: includes/module-resizer.php:121
 msgid "🖼️ Scale to 800px"
 msgstr ""
 
-#: includes/module-resizer.php:255
+#: includes/module-resizer.php:122
 msgid "🖼️ Scale to 1200px"
 msgstr ""
 
-#: includes/module-resizer.php:263
+#: includes/module-resizer.php:130
 msgid "Invalid request."
 msgstr ""
 
-#: includes/module-resizer.php:281
+#: includes/module-resizer.php:148
 msgid "Security check failed. Please reload the page."
 msgstr ""
 
-#: includes/module-resizer.php:290
+#: includes/module-resizer.php:157
 msgid "You are not allowed to edit this image."
 msgstr ""
 
-#: includes/module-resizer.php:295
+#: includes/module-resizer.php:162
 msgid "Not an image."
 msgstr ""
 
-#: includes/module-resizer.php:300
+#: includes/module-resizer.php:167
 msgid "File not found."
 msgstr ""
 
-#: includes/module-resizer.php:305
+#: includes/module-resizer.php:172
 msgid "Image error."
 msgstr ""
 
 #. translators: %d: target width/height in pixels
-#: includes/module-resizer.php:314
+#: includes/module-resizer.php:181
 #, php-format
 msgid "Already %dpx or smaller."
 msgstr ""
 
-#: includes/module-resizer.php:321
+#: includes/module-resizer.php:188
 msgid "Resize error."
 msgstr ""
 
-#: includes/module-resizer.php:326
+#: includes/module-resizer.php:193
 msgid "Save error."
 msgstr ""
 
-#: includes/module-resizer.php:343
+#: includes/module-resizer.php:210
 msgid "Resizer"
 msgstr ""
 
@@ -639,6 +647,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:88
 #: includes/module-semantic-blocks.php:299
+#: assets/js/semantic-blocks-editor.js:34
 msgid "Article"
 msgstr ""
 
@@ -649,6 +658,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:93
 #: includes/module-semantic-blocks.php:300
+#: assets/js/semantic-blocks-editor.js:35
 msgid "Section"
 msgstr ""
 
@@ -659,6 +669,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:98
 #: includes/module-semantic-blocks.php:301
+#: assets/js/semantic-blocks-editor.js:36
 msgid "Aside"
 msgstr ""
 
@@ -669,6 +680,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:103
 #: includes/module-semantic-blocks.php:302
+#: assets/js/semantic-blocks-editor.js:37
 msgid "Header"
 msgstr ""
 
@@ -679,6 +691,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:108
 #: includes/module-semantic-blocks.php:303
+#: assets/js/semantic-blocks-editor.js:38
 msgid "Footer"
 msgstr ""
 
@@ -689,6 +702,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:113
 #: includes/module-semantic-blocks.php:304
+#: assets/js/semantic-blocks-editor.js:39
 msgid "Main"
 msgstr ""
 
@@ -699,6 +713,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:118
 #: includes/module-semantic-blocks.php:305
+#: assets/js/semantic-blocks-editor.js:40
 msgid "Figure"
 msgstr ""
 
@@ -709,6 +724,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:123
 #: includes/module-semantic-blocks.php:306
+#: assets/js/semantic-blocks-editor.js:41
 msgid "Address"
 msgstr ""
 
@@ -719,6 +735,7 @@ msgstr ""
 
 #: includes/module-semantic-blocks.php:128
 #: includes/module-semantic-blocks.php:307
+#: assets/js/semantic-blocks-editor.js:42
 msgid "Nav"
 msgstr ""
 
@@ -776,36 +793,32 @@ msgstr ""
 msgid "The sanitized SVG file could not be saved."
 msgstr ""
 
-#: wunderkiste-toolkit.php:165
+#: wunderkiste-toolkit.php:197
 #: assets/js/semantic-blocks-editor.js:73
 #: assets/js/semantic-blocks-editor.js:235
 msgid "Settings"
 msgstr ""
 
-#: wunderkiste-toolkit.php:174
+#: wunderkiste-toolkit.php:206
 msgid "Documentation"
 msgstr ""
 
-#: wunderkiste-toolkit.php:175
+#: wunderkiste-toolkit.php:207
 msgid "Support"
 msgstr ""
 
-#: wunderkiste-toolkit.php:192
+#: wunderkiste-toolkit.php:224
 msgid "Wunderkiste Toolkit activated!"
 msgstr ""
 
 #. translators: %s: settings page URL
-#: wunderkiste-toolkit.php:196
+#: wunderkiste-toolkit.php:228
 #, php-format
 msgid "Go to %s to enable the modules you want."
 msgstr ""
 
-#: wunderkiste-toolkit.php:197
+#: wunderkiste-toolkit.php:229
 msgid "Settings → Wunderkiste Toolkit"
-msgstr ""
-
-#: wunderkiste-toolkit.php:238
-msgid "Active modules:"
 msgstr ""
 
 #: assets/js/semantic-blocks-editor.js:15

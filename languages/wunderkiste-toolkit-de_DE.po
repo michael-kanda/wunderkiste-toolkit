@@ -4,8 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wunderkiste Toolkit 2.12\n"
 "Report-Msgid-Bugs-To: https://designare.at/wunderkiste-toolkit\n"
-"Last-Translator: Michael Kanda\n"
+"POT-Creation-Date: 2026-09-26T10:37:19+00:00\n"
 "PO-Revision-Date: 2026-09-26 12:00+0200\n"
+"Last-Translator: Michael Kanda\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +16,8 @@ msgstr ""
 "X-Domain: wunderkiste-toolkit\n"
 
 #. Plugin Name of the plugin
-#: wunderkiste-toolkit.php:3
-#: includes/admin-settings.php:11
-#: includes/admin-settings.php:238
+#: wunderkiste-toolkit.php:3 includes/admin-settings.php:11
+#: includes/admin-settings.php:254
 msgid "Wunderkiste Toolkit"
 msgstr "Wunderkiste Toolkit"
 
@@ -28,8 +28,12 @@ msgstr "https://designare.at/wunderkiste-toolkit"
 
 #. Description of the plugin
 #: wunderkiste-toolkit.php:5
-msgid "Modular toolkit: SEO meta and schema, image resizing, SVG uploads, login protection, lightbox and more. Enable only what you need."
-msgstr "Dein modularer Werkzeugkasten: SEO Meta & Schema, Bildskalierung, SVG-Upload, Login-Schutz, Lightbox und mehr. Aktiviere nur, was du brauchst."
+msgid ""
+"Modular toolkit: SEO meta and schema, image resizing, SVG uploads, login "
+"protection, lightbox and more. Enable only what you need."
+msgstr ""
+"Dein modularer Werkzeugkasten: SEO Meta & Schema, Bildskalierung, SVG-"
+"Upload, Login-Schutz, Lightbox und mehr. Aktiviere nur, was du brauchst."
 
 #. Author of the plugin
 #: wunderkiste-toolkit.php:7
@@ -49,17 +53,18 @@ msgstr "Wunderkiste Toolkit Einstellungen"
 msgid "Active modules"
 msgstr "Aktive Module"
 
-#: includes/admin-settings.php:36
-#: wunderkiste-toolkit.php:254
+#: includes/admin-settings.php:36 wunderkiste-toolkit.php:252
 msgid "SEO Meta Settings"
 msgstr "SEO Meta Einstellungen"
 
 #: includes/admin-settings.php:36
-msgid "Extended meta tags per page: title, description, Open Graph, Twitter Cards."
-msgstr "Erweiterte Meta-Tags pro Seite: Title, Description, Open Graph, Twitter Cards."
+msgid ""
+"Extended meta tags per page: title, description, Open Graph, Twitter Cards."
+msgstr ""
+"Erweiterte Meta-Tags pro Seite: Title, Description, Open Graph, Twitter "
+"Cards."
 
-#: includes/admin-settings.php:37
-#: wunderkiste-toolkit.php:255
+#: includes/admin-settings.php:37 wunderkiste-toolkit.php:253
 msgid "SEO Schema (JSON-LD)"
 msgstr "SEO Schema (JSON-LD)"
 
@@ -67,8 +72,7 @@ msgstr "SEO Schema (JSON-LD)"
 msgid "Adds an input field for structured data."
 msgstr "Fügt ein Eingabefeld für strukturierte Daten hinzu."
 
-#: includes/admin-settings.php:38
-#: wunderkiste-toolkit.php:256
+#: includes/admin-settings.php:38 wunderkiste-toolkit.php:254
 msgid "Bulk NoIndex Manager"
 msgstr "Bulk NoIndex Manager"
 
@@ -76,8 +80,7 @@ msgstr "Bulk NoIndex Manager"
 msgid "Set or remove NoIndex for many posts at once."
 msgstr "Ermöglicht das massenhafte Setzen/Entfernen von NoIndex."
 
-#: includes/admin-settings.php:39
-#: wunderkiste-toolkit.php:257
+#: includes/admin-settings.php:39 wunderkiste-toolkit.php:255
 msgid "SEO Zombie Killer"
 msgstr "SEO Zombie Killer"
 
@@ -85,8 +88,7 @@ msgstr "SEO Zombie Killer"
 msgid "Redirects empty attachment pages to their posts (301)."
 msgstr "Leitet leere Anhang-Seiten auf Beiträge um (301)."
 
-#: includes/admin-settings.php:40
-#: wunderkiste-toolkit.php:258
+#: includes/admin-settings.php:40 wunderkiste-toolkit.php:256
 msgid "Conversion Tracker"
 msgstr "Conversion Tracker"
 
@@ -94,8 +96,7 @@ msgstr "Conversion Tracker"
 msgid "Enables GA4 and Google Ads conversion tracking."
 msgstr "Ermöglicht GA4 und Google Ads Conversion-Tracking."
 
-#: includes/admin-settings.php:43
-#: wunderkiste-toolkit.php:261
+#: includes/admin-settings.php:43 wunderkiste-toolkit.php:259
 msgid "Image Resizer (800px/1200px)"
 msgstr "Bildskalierung (800px/1200px)"
 
@@ -103,8 +104,7 @@ msgstr "Bildskalierung (800px/1200px)"
 msgid "Button in the media details to scale images (92% quality)."
 msgstr "Button in Mediendetails zum Skalieren (92% Qualität)."
 
-#: includes/admin-settings.php:44
-#: wunderkiste-toolkit.php:262
+#: includes/admin-settings.php:44 wunderkiste-toolkit.php:260
 msgid "Upload Cleaner"
 msgstr "Upload Cleaner"
 
@@ -112,8 +112,7 @@ msgstr "Upload Cleaner"
 msgid "Automatically clean file names on upload."
 msgstr "Dateinamen beim Upload automatisch bereinigen."
 
-#: includes/admin-settings.php:45
-#: wunderkiste-toolkit.php:263
+#: includes/admin-settings.php:45 wunderkiste-toolkit.php:261
 msgid "Zero-Click Image SEO"
 msgstr "Zero-Click Image SEO"
 
@@ -121,8 +120,7 @@ msgstr "Zero-Click Image SEO"
 msgid "Generate title and alt text from the file name."
 msgstr "Titel und Alt-Text automatisch aus dem Dateinamen generieren."
 
-#: includes/admin-settings.php:46
-#: wunderkiste-toolkit.php:264
+#: includes/admin-settings.php:46 wunderkiste-toolkit.php:262
 msgid "Media Inspector"
 msgstr "Media Inspector"
 
@@ -130,8 +128,7 @@ msgstr "Media Inspector"
 msgid "Shows file size and pixel dimensions in the media library."
 msgstr "Zeigt Dateigröße und Pixelmaße in der Mediathek."
 
-#: includes/admin-settings.php:47
-#: wunderkiste-toolkit.php:265
+#: includes/admin-settings.php:47 wunderkiste-toolkit.php:263
 msgid "SVG Upload Support"
 msgstr "SVG-Upload"
 
@@ -139,17 +136,19 @@ msgstr "SVG-Upload"
 msgid "Allows SVG uploads with security sanitization."
 msgstr "Erlaubt das Hochladen von SVG-Dateien mit Sicherheitsbereinigung."
 
-#: includes/admin-settings.php:48
-#: wunderkiste-toolkit.php:266
+#: includes/admin-settings.php:48 wunderkiste-toolkit.php:264
 msgid "Decent Lightbox"
 msgstr "Decent Lightbox"
 
 #: includes/admin-settings.php:48
-msgid "Lightweight image lightbox, enabled per image in the media library (vanilla JS, no dependencies)."
-msgstr "Schlanke Bild-Lightbox, pro Bild in der Mediathek aktivierbar (Vanilla JS, ohne Abhängigkeiten)."
+msgid ""
+"Lightweight image lightbox, enabled per image in the media library (vanilla "
+"JS, no dependencies)."
+msgstr ""
+"Schlanke Bild-Lightbox, pro Bild in der Mediathek aktivierbar (Vanilla JS, "
+"ohne Abhängigkeiten)."
 
-#: includes/admin-settings.php:51
-#: wunderkiste-toolkit.php:269
+#: includes/admin-settings.php:51 wunderkiste-toolkit.php:267
 msgid "Emoji Bloat Remover"
 msgstr "Emoji-Ballast entfernen"
 
@@ -157,8 +156,7 @@ msgstr "Emoji-Ballast entfernen"
 msgid "Removes the WordPress emoji scripts for faster page loads."
 msgstr "Entfernt WordPress Emoji-Skripte für schnellere Ladezeiten."
 
-#: includes/admin-settings.php:54
-#: wunderkiste-toolkit.php:272
+#: includes/admin-settings.php:54 wunderkiste-toolkit.php:270
 msgid "XML-RPC Blocker"
 msgstr "XML-RPC Blocker"
 
@@ -166,8 +164,7 @@ msgstr "XML-RPC Blocker"
 msgid "Closes the XML-RPC interface."
 msgstr "Schließt die XML-RPC-Schnittstelle."
 
-#: includes/admin-settings.php:55
-#: wunderkiste-toolkit.php:273
+#: includes/admin-settings.php:55 wunderkiste-toolkit.php:271
 msgid "Login Guard"
 msgstr "Login-Türsteher"
 
@@ -180,11 +177,18 @@ msgid "Login Guard key"
 msgstr "Türsteher-Schlüssel"
 
 #: includes/admin-settings.php:65
-msgid "Your secret word. Afterwards you can only log in via <code>wp-login.php?YOURWORD</code>. Without a key the module does nothing – there is deliberately no default. Logout, password reset and protected posts keep working without the key."
-msgstr "Dein geheimes Wort. Login danach nur noch über <code>wp-login.php?DEINWORT</code>. Ohne Eintrag bleibt das Modul wirkungslos – einen Standardwert gibt es bewusst nicht. Logout, Passwort-Reset und geschützte Beiträge funktionieren weiterhin ohne Schlüssel."
+msgid ""
+"Your secret word. Afterwards you can only log in via <code>wp-login.php?"
+"YOURWORD</code>. Without a key the module does nothing – there is "
+"deliberately no default. Logout, password reset and protected posts keep "
+"working without the key."
+msgstr ""
+"Dein geheimes Wort. Login danach nur noch über <code>wp-login.php?DEINWORT</"
+"code>. Ohne Eintrag bleibt das Modul wirkungslos – einen Standardwert gibt "
+"es bewusst nicht. Logout, Passwort-Reset und geschützte Beiträge "
+"funktionieren weiterhin ohne Schlüssel."
 
-#: includes/admin-settings.php:69
-#: wunderkiste-toolkit.php:274
+#: includes/admin-settings.php:69 wunderkiste-toolkit.php:272
 msgid "Comment Blocker"
 msgstr "Comment Blocker"
 
@@ -192,8 +196,7 @@ msgstr "Comment Blocker"
 msgid "Disables comments site-wide."
 msgstr "Deaktiviert Kommentare auf der gesamten Website."
 
-#: includes/admin-settings.php:70
-#: wunderkiste-toolkit.php:275
+#: includes/admin-settings.php:70 wunderkiste-toolkit.php:273
 msgid "ID Column Display"
 msgstr "ID-Spalte"
 
@@ -201,8 +204,7 @@ msgstr "ID-Spalte"
 msgid "Shows the post/page/media ID in all list tables."
 msgstr "Zeigt die Beitrags-, Seiten- und Medien-ID in allen Übersichten an."
 
-#: includes/admin-settings.php:73
-#: wunderkiste-toolkit.php:278
+#: includes/admin-settings.php:73 wunderkiste-toolkit.php:276
 msgid "Date Shortcode"
 msgstr "Datums-Shortcode"
 
@@ -210,9 +212,8 @@ msgstr "Datums-Shortcode"
 msgid "Inserts the current date via shortcode."
 msgstr "Fügt das aktuelle Datum per Shortcode ein."
 
-#: includes/admin-settings.php:74
-#: includes/module-semantic-blocks.php:18
-#: wunderkiste-toolkit.php:279
+#: includes/admin-settings.php:74 includes/module-semantic-blocks.php:18
+#: wunderkiste-toolkit.php:277
 msgid "Semantic Blocks"
 msgstr "Semantic Blocks"
 
@@ -232,48 +233,61 @@ msgstr "Conversion-Währung"
 msgid "Currency code for GA4 and Google Ads conversion tracking."
 msgstr "Währungscode für GA4- und Google-Ads-Conversion-Tracking."
 
-#: includes/admin-settings.php:148
+#: includes/admin-settings.php:99
+msgid "Legacy date shortcodes"
+msgstr "Alte Datums-Shortcodes"
+
+#: includes/admin-settings.php:107
+msgid ""
+"Also register [datum], [jahr] and [monat] from earlier versions (Date "
+"Shortcode module). New content should use [seowk_date], [seowk_year] and "
+"[seowk_month]."
+msgstr "Zusätzlich [datum], [jahr] und [monat] aus früheren Versionen registrieren (Modul Datums-Shortcode). Für neue Inhalte [seowk_date], [seowk_year] und [seowk_month] verwenden."
+
+#: includes/admin-settings.php:163
 msgid "Choose the tools you want to enable."
 msgstr "Wähle hier die Werkzeuge aus, die du aktivieren möchtest."
 
-#: includes/admin-settings.php:152
+#: includes/admin-settings.php:167
 msgid "Further options for active modules."
 msgstr "Weitere Konfigurationsoptionen für aktive Module."
 
-#: includes/admin-settings.php:176
+#: includes/admin-settings.php:192
 msgid "long, random word"
 msgstr "langes, zufälliges Wort"
 
-#: includes/admin-settings.php:223
+#: includes/admin-settings.php:239
 msgid "Filter:"
 msgstr "Filter:"
 
-#: includes/admin-settings.php:243
-msgid "Your modular all-in-one toolkit for SEO, performance and administration."
-msgstr "Dein modularer All-in-One-Werkzeugkasten für SEO, Performance und Verwaltung."
+#: includes/admin-settings.php:259
+msgid ""
+"Your modular all-in-one toolkit for SEO, performance and administration."
+msgstr ""
+"Dein modularer All-in-One-Werkzeugkasten für SEO, Performance und Verwaltung."
 
-#: includes/admin-settings.php:247
+#: includes/admin-settings.php:263
 msgid "How it works:"
 msgstr "So funktioniert's:"
 
-#: includes/admin-settings.php:249
+#: includes/admin-settings.php:265
 msgid "Enable only the modules you really need"
 msgstr "Aktiviere nur die Module, die du wirklich brauchst"
 
-#: includes/admin-settings.php:250
+#: includes/admin-settings.php:266
 msgid "Every module works independently and efficiently"
 msgstr "Jedes Modul arbeitet unabhängig und performant"
 
-#: includes/admin-settings.php:251
+#: includes/admin-settings.php:267
 msgid "All modules are disabled by default"
 msgstr "Standardmäßig sind alle Module deaktiviert"
 
-#: includes/admin-settings.php:259
+#: includes/admin-settings.php:275
 msgid "Save settings"
 msgstr "Einstellungen speichern"
 
 #. translators: %s: author name
-#: includes/admin-settings.php:268
+#: includes/admin-settings.php:284
 #, php-format
 msgid "Made with ❤️ by %s"
 msgstr "Entwickelt mit ❤️ von %s"
@@ -288,8 +302,12 @@ msgid "Lightbox"
 msgstr "Lightbox"
 
 #: includes/lightbox/class-seowk-lightbox-admin.php:59
-msgid "When enabled, clicking the image on the front end opens it in a lightweight overlay."
-msgstr "Wenn aktiviert, öffnet ein Klick auf das Bild im Frontend eine schlanke Overlay-Ansicht."
+msgid ""
+"When enabled, clicking the image on the front end opens it in a lightweight "
+"overlay."
+msgstr ""
+"Wenn aktiviert, öffnet ein Klick auf das Bild im Frontend eine schlanke "
+"Overlay-Ansicht."
 
 #: includes/lightbox/class-seowk-lightbox-admin.php:120
 msgid "Lightbox enabled"
@@ -351,7 +369,7 @@ msgstr "Wird von Suchmaschinen nicht indexiert"
 msgid "Indexed by search engines"
 msgstr "Wird von Suchmaschinen indexiert"
 
-#: includes/module-bulk-noindex.php:167
+#: includes/module-bulk-noindex.php:176
 msgid "NoIndex (do not index)"
 msgstr "NoIndex (nicht indexieren)"
 
@@ -404,16 +422,16 @@ msgstr "Aktiviere dies auf Danke-Seiten nach dem Absenden eines Formulars."
 msgid "Currency: %s (can be changed in the plugin settings)"
 msgstr "Währung: %s (änderbar in den Plugin-Einstellungen)"
 
-#: includes/module-conversion-tracker.php:261
+#: includes/module-conversion-tracker.php:249
 msgid "GA4 conversion active"
 msgstr "GA4-Conversion aktiv"
 
-#: includes/module-conversion-tracker.php:265
+#: includes/module-conversion-tracker.php:253
 msgid "Google Ads conversion active"
 msgstr "Google-Ads-Conversion aktiv"
 
 #. translators: %s: post ID
-#: includes/module-id-column.php:57
+#: includes/module-id-column.php:63
 #, php-format
 msgid "Click to copy: %s"
 msgstr "Klicken zum Kopieren: %s"
@@ -425,8 +443,13 @@ msgstr "Wunderkiste Toolkit:"
 #. translators: %s: settings page URL
 #: includes/module-login-protection.php:195
 #, php-format
-msgid "The Login Guard is active, but no key is set. Until you set your own key, the login page stays publicly reachable. %s"
-msgstr "Der Login-Türsteher ist aktiv, aber es ist kein Schlüssel gesetzt. Solange kein eigener Schlüssel hinterlegt ist, bleibt die Login-Seite frei erreichbar. %s"
+msgid ""
+"The Login Guard is active, but no key is set. Until you set your own key, "
+"the login page stays publicly reachable. %s"
+msgstr ""
+"Der Login-Türsteher ist aktiv, aber es ist kein Schlüssel gesetzt. Solange "
+"kein eigener Schlüssel hinterlegt ist, bleibt die Login-Seite frei "
+"erreichbar. %s"
 
 #: includes/module-login-protection.php:196
 msgid "Set it now"
@@ -476,8 +499,7 @@ msgstr "OG Description"
 msgid "OG image URL"
 msgstr "OG Image URL"
 
-#: includes/module-resizer.php:45
-#: includes/module-resizer.php:95
+#: includes/module-resizer.php:45 includes/module-resizer.php:95
 msgid "Current:"
 msgstr "Aktuell:"
 
@@ -499,7 +521,8 @@ msgstr "Bild auf %dpx verkleinern? Original wird überschrieben."
 #: includes/module-resizer.php:92
 #, php-format
 msgid "Scale selected images down to %dpx? The originals will be overwritten!"
-msgstr "Ausgewählte Bilder auf %dpx verkleinern? Originale werden überschrieben!"
+msgstr ""
+"Ausgewählte Bilder auf %dpx verkleinern? Originale werden überschrieben!"
 
 #: includes/module-resizer.php:93
 msgid "⏳ Working..."
@@ -509,8 +532,7 @@ msgstr "⏳ Arbeite..."
 msgid "✓ Done:"
 msgstr "✓ Fertig:"
 
-#: includes/module-resizer.php:96
-#: includes/module-resizer.php:102
+#: includes/module-resizer.php:96 includes/module-resizer.php:102
 msgid "Error"
 msgstr "Fehler"
 
@@ -534,53 +556,53 @@ msgstr "Fertig!"
 msgid "successful"
 msgstr "erfolgreich"
 
-#: includes/module-resizer.php:254
+#: includes/module-resizer.php:121
 msgid "🖼️ Scale to 800px"
 msgstr "🖼️ Auf 800px skalieren"
 
-#: includes/module-resizer.php:255
+#: includes/module-resizer.php:122
 msgid "🖼️ Scale to 1200px"
 msgstr "🖼️ Auf 1200px skalieren"
 
-#: includes/module-resizer.php:263
+#: includes/module-resizer.php:130
 msgid "Invalid request."
 msgstr "Ungültige Anfrage."
 
-#: includes/module-resizer.php:281
+#: includes/module-resizer.php:148
 msgid "Security check failed. Please reload the page."
 msgstr "Sicherheitsprüfung fehlgeschlagen. Bitte die Seite neu laden."
 
-#: includes/module-resizer.php:290
+#: includes/module-resizer.php:157
 msgid "You are not allowed to edit this image."
 msgstr "Du darfst dieses Bild nicht bearbeiten."
 
-#: includes/module-resizer.php:295
+#: includes/module-resizer.php:162
 msgid "Not an image."
 msgstr "Kein Bild."
 
-#: includes/module-resizer.php:300
+#: includes/module-resizer.php:167
 msgid "File not found."
 msgstr "Datei nicht gefunden."
 
-#: includes/module-resizer.php:305
+#: includes/module-resizer.php:172
 msgid "Image error."
 msgstr "Bildfehler."
 
 #. translators: %d: target width/height in pixels
-#: includes/module-resizer.php:314
+#: includes/module-resizer.php:181
 #, php-format
 msgid "Already %dpx or smaller."
 msgstr "Bereits %dpx oder kleiner."
 
-#: includes/module-resizer.php:321
+#: includes/module-resizer.php:188
 msgid "Resize error."
 msgstr "Resize-Fehler."
 
-#: includes/module-resizer.php:326
+#: includes/module-resizer.php:193
 msgid "Save error."
 msgstr "Speicherfehler."
 
-#: includes/module-resizer.php:343
+#: includes/module-resizer.php:210
 msgid "Resizer"
 msgstr "Resizer"
 
@@ -593,8 +615,12 @@ msgid "Paste your JSON-LD object here (without script tags):"
 msgstr "Füge hier dein JSON-LD Objekt ein (ohne Script Tags):"
 
 #: includes/module-schema.php:21
-msgid "Example: { \"@context\": \"https://schema.org\", \"@type\": \"Article\", ... }"
-msgstr "Beispiel: { \"@context\": \"https://schema.org\", \"@type\": \"Article\", ... }"
+msgid ""
+"Example: { \"@context\": \"https://schema.org\", \"@type\": "
+"\"Article\", ... }"
+msgstr ""
+"Beispiel: { \"@context\": \"https://schema.org\", \"@type\": "
+"\"Article\", ... }"
 
 #: includes/module-schema.php:25
 msgid "Warning: invalid JSON format!"
@@ -639,6 +665,7 @@ msgstr "Kein Icon"
 
 #: includes/module-semantic-blocks.php:88
 #: includes/module-semantic-blocks.php:299
+#: assets/js/semantic-blocks-editor.js:34
 msgid "Article"
 msgstr "Artikel"
 
@@ -649,6 +676,7 @@ msgstr "Semantischer Container für eigenständige Inhalte."
 
 #: includes/module-semantic-blocks.php:93
 #: includes/module-semantic-blocks.php:300
+#: assets/js/semantic-blocks-editor.js:35
 msgid "Section"
 msgstr "Abschnitt"
 
@@ -659,6 +687,7 @@ msgstr "Thematischer Abschnitt mit Überschrift."
 
 #: includes/module-semantic-blocks.php:98
 #: includes/module-semantic-blocks.php:301
+#: assets/js/semantic-blocks-editor.js:36
 msgid "Aside"
 msgstr "Randbereich"
 
@@ -669,6 +698,7 @@ msgstr "Ergänzender Inhalt, Sidebar-Element."
 
 #: includes/module-semantic-blocks.php:103
 #: includes/module-semantic-blocks.php:302
+#: assets/js/semantic-blocks-editor.js:37
 msgid "Header"
 msgstr "Kopfbereich"
 
@@ -679,6 +709,7 @@ msgstr "Einleitungsbereich eines Abschnitts."
 
 #: includes/module-semantic-blocks.php:108
 #: includes/module-semantic-blocks.php:303
+#: assets/js/semantic-blocks-editor.js:38
 msgid "Footer"
 msgstr "Fußbereich"
 
@@ -689,6 +720,7 @@ msgstr "Fußbereich eines Abschnitts."
 
 #: includes/module-semantic-blocks.php:113
 #: includes/module-semantic-blocks.php:304
+#: assets/js/semantic-blocks-editor.js:39
 msgid "Main"
 msgstr "Hauptinhalt"
 
@@ -699,6 +731,7 @@ msgstr "Hauptinhalt der Seite (nur einmal pro Seite)."
 
 #: includes/module-semantic-blocks.php:118
 #: includes/module-semantic-blocks.php:305
+#: assets/js/semantic-blocks-editor.js:40
 msgid "Figure"
 msgstr "Abbildung"
 
@@ -709,6 +742,7 @@ msgstr "Abbildung mit optionaler Beschriftung."
 
 #: includes/module-semantic-blocks.php:123
 #: includes/module-semantic-blocks.php:306
+#: assets/js/semantic-blocks-editor.js:41
 msgid "Address"
 msgstr "Adresse"
 
@@ -719,6 +753,7 @@ msgstr "Kontaktinformationen."
 
 #: includes/module-semantic-blocks.php:128
 #: includes/module-semantic-blocks.php:307
+#: assets/js/semantic-blocks-editor.js:42
 msgid "Nav"
 msgstr "Navigation"
 
@@ -762,7 +797,8 @@ msgstr "Die SVG-Datei konnte nicht gelesen werden."
 
 #: includes/module-svg.php:182
 msgid "Compressed SVGZ files cannot be checked on this server."
-msgstr "Komprimierte SVGZ-Dateien können auf diesem Server nicht geprüft werden."
+msgstr ""
+"Komprimierte SVGZ-Dateien können auf diesem Server nicht geprüft werden."
 
 #: includes/module-svg.php:189
 msgid "The SVGZ file could not be decompressed."
@@ -770,43 +806,39 @@ msgstr "Die SVGZ-Datei konnte nicht entpackt werden."
 
 #: includes/module-svg.php:199
 msgid "This SVG file could not be processed safely and was rejected."
-msgstr "Diese SVG-Datei konnte nicht sicher verarbeitet werden und wurde abgelehnt."
+msgstr ""
+"Diese SVG-Datei konnte nicht sicher verarbeitet werden und wurde abgelehnt."
 
 #: includes/module-svg.php:206
 msgid "The sanitized SVG file could not be saved."
 msgstr "Die bereinigte SVG-Datei konnte nicht gespeichert werden."
 
-#: wunderkiste-toolkit.php:165
-#: assets/js/semantic-blocks-editor.js:73
+#: wunderkiste-toolkit.php:197 assets/js/semantic-blocks-editor.js:73
 #: assets/js/semantic-blocks-editor.js:235
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: wunderkiste-toolkit.php:174
+#: wunderkiste-toolkit.php:206
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: wunderkiste-toolkit.php:175
+#: wunderkiste-toolkit.php:207
 msgid "Support"
 msgstr "Support"
 
-#: wunderkiste-toolkit.php:192
+#: wunderkiste-toolkit.php:224
 msgid "Wunderkiste Toolkit activated!"
 msgstr "Wunderkiste Toolkit aktiviert!"
 
 #. translators: %s: settings page URL
-#: wunderkiste-toolkit.php:196
+#: wunderkiste-toolkit.php:228
 #, php-format
 msgid "Go to %s to enable the modules you want."
 msgstr "Gehe zu %s, um deine gewünschten Module zu aktivieren."
 
-#: wunderkiste-toolkit.php:197
+#: wunderkiste-toolkit.php:229
 msgid "Settings → Wunderkiste Toolkit"
 msgstr "Einstellungen → Wunderkiste Toolkit"
-
-#: wunderkiste-toolkit.php:238
-msgid "Active modules:"
-msgstr "Aktive Module:"
 
 #: assets/js/semantic-blocks-editor.js:15
 msgid "Arrow (▶ ▼)"

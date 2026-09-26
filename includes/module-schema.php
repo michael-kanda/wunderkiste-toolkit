@@ -97,8 +97,7 @@ function seowk_schema_output_head() {
                 );
 
                 if ( false !== $safe_json ) {
-                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode() with JSON_HEX_* flags, see above.
-                    echo "\n" . '<script type="application/ld+json">' . "\n" . $safe_json . "\n" . '</script>' . "\n";
+                    wp_print_inline_script_tag( $safe_json, array( 'type' => 'application/ld+json' ) );
                 }
             }
         }

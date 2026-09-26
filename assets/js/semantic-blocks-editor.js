@@ -31,15 +31,15 @@
 
     // Wrapper Blocks (article, section, aside, etc.)
     const wrapperBlocks = [
-        { tag: 'article', title: 'Article', icon: 'media-text', description: __( 'Semantic container for self-contained content.', 'wunderkiste-toolkit' ) },
-        { tag: 'section', title: 'Section', icon: 'screenoptions', description: __( 'Thematic section with a heading.', 'wunderkiste-toolkit' ) },
-        { tag: 'aside', title: 'Aside', icon: 'align-right', description: __( 'Complementary content, sidebar element.', 'wunderkiste-toolkit' ) },
-        { tag: 'header', title: 'Header', icon: 'arrow-up-alt', description: __( 'Introductory area of a section.', 'wunderkiste-toolkit' ) },
-        { tag: 'footer', title: 'Footer', icon: 'arrow-down-alt', description: __( 'Footer area of a section.', 'wunderkiste-toolkit' ) },
-        { tag: 'main', title: 'Main', icon: 'editor-expand', description: __( 'Main content of the page (only once per page).', 'wunderkiste-toolkit' ) },
-        { tag: 'figure', title: 'Figure', icon: 'format-image', description: __( 'Figure with an optional caption.', 'wunderkiste-toolkit' ) },
-        { tag: 'address', title: 'Address', icon: 'location', description: __( 'Contact information.', 'wunderkiste-toolkit' ) },
-        { tag: 'nav', title: 'Nav', icon: 'menu', description: __( 'Navigation area.', 'wunderkiste-toolkit' ) },
+        { tag: 'article', title: __( 'Article', 'wunderkiste-toolkit' ), icon: 'media-text', description: __( 'Semantic container for self-contained content.', 'wunderkiste-toolkit' ) },
+        { tag: 'section', title: __( 'Section', 'wunderkiste-toolkit' ), icon: 'screenoptions', description: __( 'Thematic section with a heading.', 'wunderkiste-toolkit' ) },
+        { tag: 'aside', title: __( 'Aside', 'wunderkiste-toolkit' ), icon: 'align-right', description: __( 'Complementary content, sidebar element.', 'wunderkiste-toolkit' ) },
+        { tag: 'header', title: __( 'Header', 'wunderkiste-toolkit' ), icon: 'arrow-up-alt', description: __( 'Introductory area of a section.', 'wunderkiste-toolkit' ) },
+        { tag: 'footer', title: __( 'Footer', 'wunderkiste-toolkit' ), icon: 'arrow-down-alt', description: __( 'Footer area of a section.', 'wunderkiste-toolkit' ) },
+        { tag: 'main', title: __( 'Main', 'wunderkiste-toolkit' ), icon: 'editor-expand', description: __( 'Main content of the page (only once per page).', 'wunderkiste-toolkit' ) },
+        { tag: 'figure', title: __( 'Figure', 'wunderkiste-toolkit' ), icon: 'format-image', description: __( 'Figure with an optional caption.', 'wunderkiste-toolkit' ) },
+        { tag: 'address', title: __( 'Address', 'wunderkiste-toolkit' ), icon: 'location', description: __( 'Contact information.', 'wunderkiste-toolkit' ) },
+        { tag: 'nav', title: __( 'Nav', 'wunderkiste-toolkit' ), icon: 'menu', description: __( 'Navigation area.', 'wunderkiste-toolkit' ) },
     ];
 
     // Register each wrapper block

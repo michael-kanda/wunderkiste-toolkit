@@ -167,69 +167,57 @@ function seowk_conversion_save_meta_data( $post_id ) {
 }
 add_action( 'save_post', 'seowk_conversion_save_meta_data' );
 
-function seowk_conversion_output_tracking() {
+function seowk_conversion_enqueue_tracking() {
     if ( ! is_singular() ) {
         return;
     }
-    
-    $post_id = get_the_ID();
-    
-    // Get the currency
+
+    $post_id  = get_queried_object_id();
     $currency = function_exists( 'seowk_get_conversion_currency' ) ? seowk_get_conversion_currency() : 'EUR';
-    
+    $events   = array();
+
     // GA4 Conversion
-    $ga4_enabled = get_post_meta( $post_id, '_seowk_ga4_conversion_enabled', true );
-    
-    if ( $ga4_enabled ) {
-        $event_name = get_post_meta( $post_id, '_seowk_ga4_conversion_event', true );
+    if ( get_post_meta( $post_id, '_seowk_ga4_conversion_enabled', true ) ) {
+        $event_name  = (string) get_post_meta( $post_id, '_seowk_ga4_conversion_event', true );
         $event_value = get_post_meta( $post_id, '_seowk_ga4_conversion_value', true );
-        
-        if ( ! empty( $event_name ) ) {
-            ?>
-            <script>
-            window.addEventListener('load', function() {
-                if (typeof gtag === 'function') {
-                    <?php if ( ! empty( $event_value ) ) : ?>
-                    gtag('event', '<?php echo esc_js( $event_name ); ?>', {
-                        'value': <?php echo floatval( $event_value ); ?>,
-                        'currency': '<?php echo esc_js( $currency ); ?>'
-                    });
-                    <?php else : ?>
-                    gtag('event', '<?php echo esc_js( $event_name ); ?>');
-                    <?php endif; ?>
-                }
-            });
-            </script>
-            <?php
+
+        if ( '' !== $event_name ) {
+            $events[] = array(
+                'name'   => $event_name,
+                'params' => '' !== (string) $event_value
+                    ? array( 'value' => (float) $event_value, 'currency' => $currency )
+                    : null,
+            );
         }
     }
-    
+
     // Google Ads Conversion
-    $ads_enabled = get_post_meta( $post_id, '_seowk_ads_conversion_enabled', true );
-    
-    if ( $ads_enabled ) {
-        $conversion_id = get_post_meta( $post_id, '_seowk_ads_conversion_id', true );
-        $conversion_label = get_post_meta( $post_id, '_seowk_ads_conversion_label', true );
+    if ( get_post_meta( $post_id, '_seowk_ads_conversion_enabled', true ) ) {
+        $conversion_id    = (string) get_post_meta( $post_id, '_seowk_ads_conversion_id', true );
+        $conversion_label = (string) get_post_meta( $post_id, '_seowk_ads_conversion_label', true );
         $conversion_value = get_post_meta( $post_id, '_seowk_ads_conversion_value', true );
-        
-        if ( ! empty( $conversion_id ) && ! empty( $conversion_label ) ) {
-            ?>
-            <script>
-            window.addEventListener('load', function() {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'conversion', {
-                        'send_to': '<?php echo esc_js( $conversion_id ); ?>/<?php echo esc_js( $conversion_label ); ?>'<?php if ( ! empty( $conversion_value ) ) : ?>,
-                        'value': <?php echo floatval( $conversion_value ); ?>,
-                        'currency': '<?php echo esc_js( $currency ); ?>'<?php endif; ?>
-                    });
-                }
-            });
-            </script>
-            <?php
+
+        if ( '' !== $conversion_id && '' !== $conversion_label ) {
+            $params = array( 'send_to' => $conversion_id . '/' . $conversion_label );
+            if ( '' !== (string) $conversion_value ) {
+                $params['value']    = (float) $conversion_value;
+                $params['currency'] = $currency;
+            }
+            $events[] = array(
+                'name'   => 'conversion',
+                'params' => $params,
+            );
         }
     }
+
+    if ( empty( $events ) ) {
+        return;
+    }
+
+    wp_enqueue_script( 'seowk-conversion-tracker', SEOWK_PLUGIN_URL . 'assets/js/conversion-tracker.js', array(), SEOWK_VERSION, true );
+    wp_add_inline_script( 'seowk-conversion-tracker', 'window.seowkConversions = ' . wp_json_encode( $events ) . ';', 'before' );
 }
-add_action( 'wp_footer', 'seowk_conversion_output_tracking', 999 );
+add_action( 'wp_enqueue_scripts', 'seowk_conversion_enqueue_tracking' );
 
 function seowk_conversion_add_admin_column( $columns ) {
     $new_columns = array();
@@ -274,7 +262,9 @@ function seowk_conversion_fill_admin_column( $column_name, $post_id ) {
 add_action( 'manage_posts_custom_column', 'seowk_conversion_fill_admin_column', 10, 2 );
 add_action( 'manage_pages_custom_column', 'seowk_conversion_fill_admin_column', 10, 2 );
 
-function seowk_conversion_admin_css() {
-    echo '<style>.column-seowk_conversion { width: 80px; text-align: center; }</style>';
+function seowk_conversion_admin_css( $hook_suffix ) {
+    if ( 'edit.php' === $hook_suffix ) {
+        seowk_add_inline_admin_css( '.column-seowk_conversion { width: 80px; text-align: center; }' );
+    }
 }
-add_action( 'admin_head', 'seowk_conversion_admin_css' );
+add_action( 'admin_enqueue_scripts', 'seowk_conversion_admin_css' );

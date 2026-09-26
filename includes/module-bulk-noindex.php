@@ -141,11 +141,20 @@ function seowk_noindex_wp_robots( $robots ) {
 }
 add_filter( 'wp_robots', 'seowk_noindex_wp_robots', 20 );
 
-// Column CSS
-function seowk_noindex_column_css() {
-    echo '<style>.column-seowk_noindex_status { width: 100px; text-align: center; }</style>';
+// Column CSS and Quick Edit script
+function seowk_noindex_enqueue_assets( $hook_suffix ) {
+    if ( 'edit.php' !== $hook_suffix ) {
+        return;
+    }
+    $screen = get_current_screen();
+    if ( ! $screen || ! in_array( $screen->post_type, array( 'post', 'page' ), true ) ) {
+        return;
+    }
+
+    seowk_add_inline_admin_css( '.column-seowk_noindex_status { width: 100px; text-align: center; }' );
+    wp_enqueue_script( 'seowk-noindex-quick-edit', SEOWK_PLUGIN_URL . 'assets/js/noindex-quick-edit.js', array( 'jquery', 'inline-edit-post' ), SEOWK_VERSION, true );
 }
-add_action( 'admin_head', 'seowk_noindex_column_css' );
+add_action( 'admin_enqueue_scripts', 'seowk_noindex_enqueue_assets' );
 
 /* ------------------------------------------------------------------------- *
  * QUICK EDIT SUPPORT
@@ -202,41 +211,6 @@ function seowk_save_quick_edit_noindex( $post_id ) {
     }
 }
 add_action( 'save_post', 'seowk_save_quick_edit_noindex' );
-
-// JavaScript for Quick Edit (load the value)
-function seowk_quick_edit_javascript() {
-    $screen = get_current_screen();
-    if ( ! $screen || ! in_array( $screen->id, array( 'edit-post', 'edit-page' ), true ) ) {
-        return;
-    }
-    ?>
-    <script type="text/javascript">
-    jQuery(function($) {
-        var $wp_inline_edit = inlineEditPost.edit;
-        
-        inlineEditPost.edit = function( id ) {
-            $wp_inline_edit.apply( this, arguments );
-            
-            var post_id = 0;
-            if ( typeof( id ) === 'object' ) {
-                post_id = parseInt( this.getId( id ) );
-            }
-            
-            if ( post_id > 0 ) {
-                var $row = $( '#post-' + post_id );
-                // Use the hidden data attribute instead of checking the colour
-                var $noindex_data = $row.find( '.seowk-noindex-data' );
-                var is_noindex = $noindex_data.length > 0 && $noindex_data.data( 'noindex' ) === 1;
-                
-                // Set the checkbox
-                $( 'input[name="seowk_noindex"]' ).prop( 'checked', is_noindex );
-            }
-        };
-    });
-    </script>
-    <?php
-}
-add_action( 'admin_footer', 'seowk_quick_edit_javascript' );
 
 // Hidden field for JavaScript access
 function seowk_add_noindex_inline_data( $column_name, $post_id ) {

@@ -93,6 +93,20 @@ function seowk_settings_init() {
             'description' => __( 'Currency code for GA4 and Google Ads conversion tracking.', 'wunderkiste-toolkit' )
         )
     );
+
+    add_settings_field(
+        'seowk_date_legacy_shortcodes',
+        __( 'Legacy date shortcodes', 'wunderkiste-toolkit' ),
+        'seowk_checkbox_render',
+        'wunderkiste-toolkit',
+        'seowk_additional_section',
+        array(
+            'label_for'   => 'seowk_date_legacy_shortcodes',
+            // Pre-2.12 settings lack the key; show what is actually in effect.
+            'default'     => seowk_is_module_active( 'seowk_enable_date_shortcode' ) ? 1 : 0,
+            'description' => __( 'Also register [datum], [jahr] and [monat] from earlier versions (Date Shortcode module). New content should use [seowk_date], [seowk_year] and [seowk_month].', 'wunderkiste-toolkit' ),
+        )
+    );
 }
 add_action( 'admin_init', 'seowk_settings_init' );
 
@@ -120,6 +134,7 @@ function seowk_sanitize_settings( $input ) {
         'seowk_enable_svg', 'seowk_enable_lightbox', 'seowk_disable_emojis', 'seowk_disable_xmlrpc',
         'seowk_enable_login_protection', 'seowk_enable_comment_blocker', 'seowk_enable_id_column',
         'seowk_enable_date_shortcode', 'seowk_enable_semantic_blocks',
+        'seowk_date_legacy_shortcodes',
     );
     
     foreach ( $checkbox_fields as $field ) {
@@ -155,7 +170,8 @@ function seowk_additional_section_callback() {
 function seowk_checkbox_render( $args ) {
     $options = get_option( 'seowk_settings' );
     $field   = $args['label_for'];
-    $checked = isset( $options[ $field ] ) ? $options[ $field ] : false;
+    $default = isset( $args['default'] ) ? $args['default'] : false;
+    $checked = isset( $options[ $field ] ) ? $options[ $field ] : $default;
     $desc    = isset( $args['description'] ) ? $args['description'] : '';
     ?>
     <label style="display: flex; align-items: center;">
@@ -272,10 +288,16 @@ function seowk_options_page_html() {
             </p>
         </div>
     </div>
-
-    <style>
-    .form-table th { width: 250px; font-weight: 600; }
-    .form-table td { padding: 15px 10px; }
-    </style>
     <?php
 }
+
+function seowk_settings_page_css( $hook_suffix ) {
+    if ( 'settings_page_wunderkiste-toolkit' !== $hook_suffix ) {
+        return;
+    }
+    seowk_add_inline_admin_css(
+        '.form-table th { width: 250px; font-weight: 600; }
+        .form-table td { padding: 15px 10px; }'
+    );
+}
+add_action( 'admin_enqueue_scripts', 'seowk_settings_page_css' );
