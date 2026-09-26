@@ -1,6 +1,6 @@
 <?php
 /**
- * MODULE: Login Türsteher
+ * MODULE: Login Guard (Login Türsteher)
  *
  * Hides wp-login.php behind a secret query parameter.
  *
@@ -9,7 +9,7 @@
  * login form itself sends, which carries no query string. That locked out
  * legitimate users as well as bots. It also shipped a published default key.
  *
- * @package SEO_Wunderkiste
+ * @package Wunderkiste_Toolkit
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -184,16 +184,16 @@ function seowk_login_protection_notice() {
         return;
     }
 
-    $url = admin_url( 'options-general.php?page=seo-wunderkiste' );
+    $url = admin_url( 'options-general.php?page=wunderkiste-toolkit' );
     ?>
     <div class="notice notice-warning">
         <p>
-            <strong><?php esc_html_e( 'SEO Wunderkiste:', 'seo-wunderkiste' ); ?></strong>
+            <strong><?php esc_html_e( 'Wunderkiste Toolkit:', 'wunderkiste-toolkit' ); ?></strong>
             <?php
             printf(
                 /* translators: %s: settings page URL */
-                esc_html__( 'Der Login Türsteher ist aktiv, aber es ist kein Schlüssel gesetzt. Solange kein eigener Schlüssel hinterlegt ist, bleibt die Login-Seite frei erreichbar. %s', 'seo-wunderkiste' ),
-                '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Jetzt festlegen', 'seo-wunderkiste' ) . '</a>'
+                esc_html__( 'The Login Guard is active, but no key is set. Until you set your own key, the login page stays publicly reachable. %s', 'wunderkiste-toolkit' ),
+                '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Set it now', 'wunderkiste-toolkit' ) . '</a>'
             );
             ?>
         </p>

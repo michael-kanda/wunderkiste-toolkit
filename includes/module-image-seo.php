@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Zero-Click Image SEO
+ * MODULE: Zero-Click Image SEO
  * ------------------------------------------------------------------------- */
 
 function seowk_auto_image_attributes( $post_ID ) {

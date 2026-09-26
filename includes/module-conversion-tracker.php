@@ -2,8 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Conversion Tracker
- * Version: 2.8 - Mit konfigurierbarer Währung
+ * MODULE: Conversion Tracker
+ * Version: 2.8 - with configurable currency
  * ------------------------------------------------------------------------- */
 
 function seowk_conversion_add_meta_box() {
@@ -12,7 +12,7 @@ function seowk_conversion_add_meta_box() {
     foreach ( $screens as $screen ) {
         add_meta_box(
             'seowk_conversion_box',
-            __( '🎯 Conversion Tracking', 'seo-wunderkiste' ),
+            __( '🎯 Conversion Tracking', 'wunderkiste-toolkit' ),
             'seowk_conversion_render_meta_box',
             $screen,
             'side',
@@ -34,7 +34,7 @@ function seowk_conversion_render_meta_box( $post ) {
     $ads_label = get_post_meta( $post->ID, '_seowk_ads_conversion_label', true );
     $ads_value = get_post_meta( $post->ID, '_seowk_ads_conversion_value', true );
     
-    // Währung aus Einstellungen holen
+    // Get the currency from the settings
     $currency = function_exists( 'seowk_get_conversion_currency' ) ? seowk_get_conversion_currency() : 'EUR';
     
     ?>
@@ -44,11 +44,11 @@ function seowk_conversion_render_meta_box( $post ) {
             
             <label style="display: block; margin-bottom: 10px;">
                 <input type="checkbox" name="seowk_ga4_conversion_enabled" value="1" <?php checked( 1, $ga4_enabled ); ?>>
-                <strong><?php esc_html_e( 'GA4 Conversion aktivieren', 'seo-wunderkiste' ); ?></strong>
+                <strong><?php esc_html_e( 'Enable GA4 conversion', 'wunderkiste-toolkit' ); ?></strong>
             </label>
             
             <p style="margin: 10px 0 5px 0;">
-                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Event Name:', 'seo-wunderkiste' ); ?></label>
+                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Event name:', 'wunderkiste-toolkit' ); ?></label>
                 <input type="text" name="seowk_ga4_conversion_event" value="<?php echo esc_attr( $ga4_event ); ?>" placeholder="purchase, conversion, lead" style="width: 100%;" />
             </p>
             
@@ -57,7 +57,7 @@ function seowk_conversion_render_meta_box( $post ) {
                     <?php 
                     printf( 
                         /* translators: %s: currency code */
-                        esc_html__( 'Conversion Value (%s):', 'seo-wunderkiste' ), 
+                        esc_html__( 'Conversion value (%s):', 'wunderkiste-toolkit' ), 
                         esc_html( $currency ) 
                     ); 
                     ?>
@@ -71,16 +71,16 @@ function seowk_conversion_render_meta_box( $post ) {
             
             <label style="display: block; margin-bottom: 10px;">
                 <input type="checkbox" name="seowk_ads_conversion_enabled" value="1" <?php checked( 1, $ads_enabled ); ?>>
-                <strong><?php esc_html_e( 'Google Ads Conversion aktivieren', 'seo-wunderkiste' ); ?></strong>
+                <strong><?php esc_html_e( 'Enable Google Ads conversion', 'wunderkiste-toolkit' ); ?></strong>
             </label>
             
             <p style="margin: 10px 0 5px 0;">
-                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Conversion ID:', 'seo-wunderkiste' ); ?></label>
+                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Conversion ID:', 'wunderkiste-toolkit' ); ?></label>
                 <input type="text" name="seowk_ads_conversion_id" value="<?php echo esc_attr( $ads_id ); ?>" placeholder="AW-123456789" style="width: 100%;" />
             </p>
             
             <p style="margin: 10px 0 5px 0;">
-                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Conversion Label:', 'seo-wunderkiste' ); ?></label>
+                <label style="font-weight: 600; display: block; margin-bottom: 3px;"><?php esc_html_e( 'Conversion label:', 'wunderkiste-toolkit' ); ?></label>
                 <input type="text" name="seowk_ads_conversion_label" value="<?php echo esc_attr( $ads_label ); ?>" placeholder="abc123def456" style="width: 100%;" />
             </p>
             
@@ -89,7 +89,7 @@ function seowk_conversion_render_meta_box( $post ) {
                     <?php 
                     printf( 
                         /* translators: %s: currency code */
-                        esc_html__( 'Conversion Value (%s):', 'seo-wunderkiste' ), 
+                        esc_html__( 'Conversion value (%s):', 'wunderkiste-toolkit' ), 
                         esc_html( $currency ) 
                     ); 
                     ?>
@@ -99,12 +99,12 @@ function seowk_conversion_render_meta_box( $post ) {
         </div>
         
         <div style="background: #f0f6fc; border-left: 3px solid #2271b1; padding: 10px; margin-top: 15px; font-size: 12px;">
-            <strong>💡 <?php esc_html_e( 'Tipp:', 'seo-wunderkiste' ); ?></strong> <?php esc_html_e( 'Aktiviere dies auf Danke-Seiten nach Formular-Absendung.', 'seo-wunderkiste' ); ?>
+            <strong>💡 <?php esc_html_e( 'Tip:', 'wunderkiste-toolkit' ); ?></strong> <?php esc_html_e( 'Enable this on thank-you pages after a form submission.', 'wunderkiste-toolkit' ); ?>
             <br><small style="color: #666;">
                 <?php 
                 printf( 
                     /* translators: %s: currency code */
-                    esc_html__( 'Währung: %s (änderbar in den Plugin-Einstellungen)', 'seo-wunderkiste' ), 
+                    esc_html__( 'Currency: %s (can be changed in the plugin settings)', 'wunderkiste-toolkit' ), 
                     esc_html( $currency ) 
                 ); 
                 ?>
@@ -174,7 +174,7 @@ function seowk_conversion_output_tracking() {
     
     $post_id = get_the_ID();
     
-    // Währung holen
+    // Get the currency
     $currency = function_exists( 'seowk_get_conversion_currency' ) ? seowk_get_conversion_currency() : 'EUR';
     
     // GA4 Conversion
@@ -258,11 +258,11 @@ function seowk_conversion_fill_admin_column( $column_name, $post_id ) {
     $output = array();
     
     if ( $ga4_enabled ) {
-        $output[] = '<span style="color: #4285f4; font-weight: 600;" title="GA4 Conversion aktiv">GA4</span>';
+        $output[] = '<span style="color: #4285f4; font-weight: 600;" title="' . esc_attr__( 'GA4 conversion active', 'wunderkiste-toolkit' ) . '">GA4</span>';
     }
     
     if ( $ads_enabled ) {
-        $output[] = '<span style="color: #34a853; font-weight: 600;" title="Google Ads Conversion aktiv">Ads</span>';
+        $output[] = '<span style="color: #34a853; font-weight: 600;" title="' . esc_attr__( 'Google Ads conversion active', 'wunderkiste-toolkit' ) . '">Ads</span>';
     }
     
     if ( empty( $output ) ) {

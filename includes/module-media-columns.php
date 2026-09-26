@@ -2,12 +2,12 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Media Library Inspector
+ * MODULE: Media Library Inspector
  * ------------------------------------------------------------------------- */
 
 function seowk_add_media_columns( $columns ) {
-    $columns['seowk_filesize']   = __( 'Dateigröße', 'seo-wunderkiste' );
-    $columns['seowk_dimensions'] = __( 'Maße (px)', 'seo-wunderkiste' );
+    $columns['seowk_filesize']   = __( 'File size', 'wunderkiste-toolkit' );
+    $columns['seowk_dimensions'] = __( 'Dimensions (px)', 'wunderkiste-toolkit' );
     return $columns;
 }
 add_filter( 'manage_upload_columns', 'seowk_add_media_columns' );

@@ -2,13 +2,13 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Custom Schema Meta Box (JSON-LD)
- * Version: 2.9 - Mit verbesserter Validierung
+ * MODULE: Custom Schema Meta Box (JSON-LD)
+ * Version: 2.9 - with improved validation
  * ------------------------------------------------------------------------- */
 
 function seowk_schema_add_meta_box() {
     foreach ( array( 'post', 'page' ) as $screen ) {
-        add_meta_box( 'seowk_schema_box_id', __( 'Strukturierte Daten (JSON-LD)', 'seo-wunderkiste' ), 'seowk_schema_render_meta_box', $screen, 'normal', 'high' );
+        add_meta_box( 'seowk_schema_box_id', __( 'Structured data (JSON-LD)', 'wunderkiste-toolkit' ), 'seowk_schema_render_meta_box', $screen, 'normal', 'high' );
     }
 }
 add_action( 'add_meta_boxes', 'seowk_schema_add_meta_box' );
@@ -16,18 +16,18 @@ add_action( 'add_meta_boxes', 'seowk_schema_add_meta_box' );
 function seowk_schema_render_meta_box( $post ) {
     $value = get_post_meta( $post->ID, '_seowk_schema_value', true );
     wp_nonce_field( 'seowk_schema_save_data', 'seowk_schema_nonce' );
-    echo '<p><label for="seowk_schema_field">' . esc_html__( 'Füge hier dein JSON-LD Objekt ein (ohne Script Tags):', 'seo-wunderkiste' ) . '</label></p>';
+    echo '<p><label for="seowk_schema_field">' . esc_html__( 'Paste your JSON-LD object here (without script tags):', 'wunderkiste-toolkit' ) . '</label></p>';
     echo '<textarea id="seowk_schema_field" name="seowk_schema_field" rows="10" style="width:100%; font-family:monospace;">' . esc_textarea( $value ) . '</textarea>';
-    echo '<p class="description">' . esc_html__( 'Beispiel: { "@context": "https://schema.org", "@type": "Article", ... }', 'seo-wunderkiste' ) . '</p>';
+    echo '<p class="description">' . esc_html__( 'Example: { "@context": "https://schema.org", "@type": "Article", ... }', 'wunderkiste-toolkit' ) . '</p>';
     
-    // Validierungs-Hinweis
+    // Validation notice
     if ( ! empty( $value ) && json_decode( $value ) === null ) {
-        echo '<p style="color: #d63638; margin-top: 10px;"><strong>⚠️ ' . esc_html__( 'Warnung: Ungültiges JSON-Format!', 'seo-wunderkiste' ) . '</strong></p>';
+        echo '<p style="color: #d63638; margin-top: 10px;"><strong>⚠️ ' . esc_html__( 'Warning: invalid JSON format!', 'wunderkiste-toolkit' ) . '</strong></p>';
     }
 }
 
 function seowk_schema_save_postdata( $post_id ) {
-    // Nonce prüfen
+    // Verify the nonce
     if ( ! isset( $_POST['seowk_schema_nonce'] ) ) { 
         return; 
     }
@@ -36,36 +36,40 @@ function seowk_schema_save_postdata( $post_id ) {
         return; 
     }
     
-    // Autosave überspringen
+    // Skip autosaves
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { 
         return; 
     }
     
-    // Berechtigungen prüfen
+    // Check permissions
     if ( ! current_user_can( 'edit_post', $post_id ) ) { 
         return; 
     }
     
-    // Schema speichern
+    // Save the schema
     if ( isset( $_POST['seowk_schema_field'] ) ) {
-        $schema_input = wp_unslash( $_POST['seowk_schema_field'] );
+        /*
+         * Raw JSON on purpose: sanitize_text_field() and friends would mangle
+         * quotes and line breaks. The value is only ever printed after being
+         * decoded and re-encoded with wp_json_encode() (see
+         * seowk_schema_output_head()) and via esc_textarea() in the meta box.
+         */
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- JSON, re-encoded on output.
+        $schema_input = trim( wp_unslash( $_POST['seowk_schema_field'] ) );
         
-        // Leeres Feld = Meta löschen
-        if ( empty( trim( $schema_input ) ) ) {
+        // Empty field = delete the meta
+        if ( '' === $schema_input ) {
             delete_post_meta( $post_id, '_seowk_schema_value' );
             return;
         }
         
-        // JSON validieren bevor gespeichert wird
-        $decoded = json_decode( $schema_input );
-        if ( $decoded !== null || trim( $schema_input ) === 'null' ) {
-            // Gültiges JSON - speichern (formatiert)
-            update_post_meta( $post_id, '_seowk_schema_value', $schema_input );
-        } else {
-            // Ungültiges JSON - trotzdem speichern damit User es korrigieren kann
-            // aber Warnung wird in der Meta Box angezeigt
-            update_post_meta( $post_id, '_seowk_schema_value', $schema_input );
-        }
+        /*
+         * Invalid JSON is stored as well so the user can fix it; the meta box
+         * shows a warning and nothing is printed on the frontend.
+         * update_post_meta() unslashes its value, so it has to be slashed
+         * again - otherwise escaped quotes (\") inside the JSON get lost.
+         */
+        update_post_meta( $post_id, '_seowk_schema_value', wp_slash( $schema_input ) );
     }
 }
 add_action( 'save_post', 'seowk_schema_save_postdata' );
@@ -74,7 +78,7 @@ function seowk_schema_output_head() {
     if ( is_singular() ) {
         $schema_json = get_post_meta( get_the_ID(), '_seowk_schema_value', true );
         
-        // Nur ausgeben wenn gültiges JSON
+        // Only print valid JSON
         if ( ! empty( $schema_json ) ) {
             $decoded = json_decode( $schema_json );
             if ( $decoded !== null ) {
@@ -93,6 +97,7 @@ function seowk_schema_output_head() {
                 );
 
                 if ( false !== $safe_json ) {
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode() with JSON_HEX_* flags, see above.
                     echo "\n" . '<script type="application/ld+json">' . "\n" . $safe_json . "\n" . '</script>' . "\n";
                 }
             }

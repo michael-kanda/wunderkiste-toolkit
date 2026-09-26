@@ -1,5 +1,5 @@
 /**
- * SEO Wunderkiste - Semantic Blocks Editor Styles
+ * Wunderkiste Toolkit - Semantic Blocks Editor Styles
  * Version: 2.9
  */
 
@@ -130,7 +130,7 @@
 
 /* InnerBlocks placeholder */
 .seowk-semantic-block .block-editor-inner-blocks .block-editor-block-list__layout:empty::after {
-    content: "Blöcke hier einfügen...";
+    content: var(--seowk-placeholder, "…");
     color: #757575;
     font-style: italic;
     display: block;

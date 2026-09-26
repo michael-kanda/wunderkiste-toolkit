@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: XML-RPC deaktivieren
+ * MODULE: XML-RPC Blocker
  * ------------------------------------------------------------------------- */
 
 add_filter( 'xmlrpc_enabled', '__return_false' );

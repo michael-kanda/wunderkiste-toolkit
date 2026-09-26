@@ -8,7 +8,7 @@
  * namespaced elements, so a standards-compliant SVG carrying a <script> tag
  * passed through untouched.
  *
- * @package SEO_Wunderkiste
+ * @package Wunderkiste_Toolkit
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -159,7 +159,7 @@ function seowk_sanitize_svg_upload( $file ) {
     }
 
     if ( ! seowk_user_may_upload_svg() ) {
-        $file['error'] = __( 'Du darfst keine SVG-Dateien hochladen.', 'seo-wunderkiste' );
+        $file['error'] = __( 'You are not allowed to upload SVG files.', 'wunderkiste-toolkit' );
         return $file;
     }
 
@@ -170,7 +170,7 @@ function seowk_sanitize_svg_upload( $file ) {
     $raw = file_get_contents( $file['tmp_name'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
     if ( false === $raw || '' === $raw ) {
-        $file['error'] = __( 'Die SVG-Datei konnte nicht gelesen werden.', 'seo-wunderkiste' );
+        $file['error'] = __( 'The SVG file could not be read.', 'wunderkiste-toolkit' );
         return $file;
     }
 
@@ -179,14 +179,14 @@ function seowk_sanitize_svg_upload( $file ) {
 
     if ( $is_gzipped ) {
         if ( ! function_exists( 'gzdecode' ) ) {
-            $file['error'] = __( 'Komprimierte SVGZ-Dateien können auf diesem Server nicht geprüft werden.', 'seo-wunderkiste' );
+            $file['error'] = __( 'Compressed SVGZ files cannot be checked on this server.', 'wunderkiste-toolkit' );
             return $file;
         }
 
         $decoded = gzdecode( $raw );
 
         if ( false === $decoded ) {
-            $file['error'] = __( 'Die SVGZ-Datei konnte nicht entpackt werden.', 'seo-wunderkiste' );
+            $file['error'] = __( 'The SVGZ file could not be decompressed.', 'wunderkiste-toolkit' );
             return $file;
         }
 
@@ -196,14 +196,14 @@ function seowk_sanitize_svg_upload( $file ) {
     $clean = seowk_sanitize_svg_content( $raw );
 
     if ( false === $clean ) {
-        $file['error'] = __( 'Diese SVG-Datei konnte nicht sicher verarbeitet werden und wurde abgelehnt.', 'seo-wunderkiste' );
+        $file['error'] = __( 'This SVG file could not be processed safely and was rejected.', 'wunderkiste-toolkit' );
         return $file;
     }
 
     $payload = $is_gzipped ? gzencode( $clean ) : $clean;
 
-    if ( false === file_put_contents( $file['tmp_name'], $payload ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_put_contents
-        $file['error'] = __( 'Die bereinigte SVG-Datei konnte nicht gespeichert werden.', 'seo-wunderkiste' );
+    if ( false === file_put_contents( $file['tmp_name'], $payload ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- overwriting PHP's own upload temp file; WP_Filesystem may need FTP credentials here.
+        $file['error'] = __( 'The sanitized SVG file could not be saved.', 'wunderkiste-toolkit' );
         return $file;
     }
 

@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: SEO Zombie Killer (Attachment Redirects)
+ * MODULE: SEO Zombie Killer (Attachment Redirects)
  * ------------------------------------------------------------------------- */
 
 function seowk_redirect_attachment_pages() {

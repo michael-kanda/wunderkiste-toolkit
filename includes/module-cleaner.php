@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Upload Filename Cleaner
+ * MODULE: Upload Filename Cleaner
  * ------------------------------------------------------------------------- */
 
 function seowk_sanitize_upload_filename( $filename ) {

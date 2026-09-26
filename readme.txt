@@ -1,618 +1,208 @@
-=== SEO Wunderkiste ===
+=== Wunderkiste Toolkit ===
 Contributors: michaelkanda
-Tags: seo, meta tags, schema, image optimization, security, performance, noindex, svg, conversion tracking, lightbox
+Tags: seo, schema, svg, image resize, lightbox
 Requires at least: 6.3
-Tested up to: 7.0
-Stable tag: 2.11
+Tested up to: 7.1
+Stable tag: 2.12
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Die modulare All-in-One Lösung für WordPress SEO, Performance, Sicherheit und Administration. | The modular all-in-one solution for WordPress SEO, performance, security, and administration.
+Modular toolkit: SEO meta and schema, image resizing, SVG uploads, login protection, lightbox and more. Enable only what you need.
 
 == Description ==
 
-🇩🇪 **DEUTSCHE BESCHREIBUNG**
+Wunderkiste Toolkit bundles **18 small modules** in one plugin. Every module is disabled by default and only loads when you switch it on under "Settings → Wunderkiste Toolkit". No bloat, no overhead for features you do not use.
 
-SEO Wunderkiste vereint **18 leistungsstarke Module** in einem einzigen Plugin. Um die Performance deiner Website zu schützen, sind alle Module standardmäßig deaktiviert. Aktiviere nur die Funktionen, die du wirklich benötigst – unter "Einstellungen → SEO Wunderkiste".
+= SEO & Content =
 
-**Das Konzept:** Keine Bloatware, kein Overhead. Jedes Modul lädt nur, wenn es aktiv ist.
+**SEO Meta Settings**
+Per post and page:
 
-= 🔍 SEO & Content (5 Module) =
-
-**1. SEO Meta Settings**
-Erweiterte Meta-Tag-Verwaltung pro Seite/Beitrag:
-* Eigener SEO-Titel (max. 60 Zeichen)
-* Meta-Description (max. 160 Zeichen)
-* Robots-Tag-Kontrolle (index/noindex, follow/nofollow)
-* Open Graph Tags (og:title, og:description, og:image)
-* Twitter Card Tags
-* Automatische Canonical-URLs
-* Fallback auf Beitragsbild wenn kein OG-Image gesetzt
-
-**2. SEO Schema (JSON-LD)**
-Fügt ein Textfeld im Editor hinzu, um eigene strukturierte Daten (Schema.org) einzufügen:
-* Eingabe als reines JSON (ohne Script-Tags)
-* Validierung vor der Ausgabe
-* Unterstützt alle Schema.org-Typen (Article, Product, FAQ, LocalBusiness, etc.)
-
-**3. Bulk NoIndex Manager**
-Massenhafte Indexierungs-Kontrolle:
-* Bulk-Aktion "NoIndex setzen" für Beiträge und Seiten
-* Bulk-Aktion "NoIndex entfernen"
-* Visuelle Spalte zeigt Indexierungs-Status (✓ Index / ✗ NoIndex)
-* Automatische Meta-Robots-Ausgabe im Frontend
-
-**4. SEO Zombie Killer (Attachment Redirects)**
-Eliminiert "Zombie-Seiten" – diese nutzlosen Anhang-URLs, die WordPress für jedes Bild erstellt:
-* 301-Redirect auf den Eltern-Beitrag (wenn vorhanden)
-* 302-Redirect zur Startseite (bei verwaisten Anhängen)
-* Verbessert Crawl-Budget und verhindert Duplicate Content
-
-**5. Conversion Tracker**
-GA4 und Google Ads Conversion-Tracking pro Seite:
-* Google Analytics 4: Event-Name + optionaler Wert
-* Google Ads: Conversion-ID + Label + Wert
-* Ideal für Danke-Seiten nach Formular-Absendung
-* Admin-Spalte zeigt aktives Tracking (GA4 / Ads)
-
-= 🖼️ Bild & Media (6 Module) =
-
-**6. Image Resizer (800px / 1200px)**
-Skaliert Bilder mit einem Klick in der Mediathek:
-* Zwei Zielgrößen: 800px oder 1200px (längste Seite)
-* 92% JPEG-Qualität für optimales Verhältnis
-* Verfügbar im Attachment-Detail und in der Listenansicht
-* Überschreibt das Original – ideal für große Uploads
-
-**7. Upload Cleaner**
-Bereinigt Dateinamen automatisch beim Upload:
-* Umlaute werden umgewandelt (ä→ae, ö→oe, ü→ue, ß→ss)
-* Leerzeichen werden zu Bindestrichen
-* Alles wird kleingeschrieben
-* SEO-freundliche URLs ohne manuelle Nacharbeit
-
-**8. Zero-Click Image SEO**
-Automatische Generierung von SEO-Attributen beim Bild-Upload:
-* Titel wird aus dem Dateinamen generiert (aufgehübscht)
-* Alt-Text wird automatisch gesetzt (wenn leer)
-* Bindestriche/Unterstriche werden zu Leerzeichen
-* Erster Buchstabe jedes Wortes groß
-
-**9. Media Inspector**
-Zusätzliche Spalten in der Medienübersicht:
-* Dateigröße (z.B. "245.32 KB")
-* Pixel-Dimensionen (z.B. "1920 x 1080")
-* Schnelle Übersicht ohne jedes Bild öffnen zu müssen
-
-**10. SVG Upload Support**
-Ermöglicht sichere SVG-Uploads:
-* MIME-Type-Registrierung für .svg und .svgz
-* Automatische Sanitization: Entfernt Scripts, Event-Handler, gefährliche Attribute
-* Vorschau in der Mediathek funktioniert
-* Dimensionen werden aus viewBox/width/height extrahiert
-* Admin-Hinweis informiert über aktive Sanitization
-
-**11. Decent Lightbox**
-Schlanker Bild-Lightbox – pro Bild in der Mediathek aktivierbar:
-* Vanilla JavaScript, keine externen Abhängigkeiten (jQuery-frei)
-* Per Checkbox in den Mediathek-Details aktivieren
-* Tastatur-Navigation (ESC zum Schließen, Tab-Trap)
-* `prefers-reduced-motion` wird respektiert
-* Lazy-Aufbau im DOM, lädt erst bei Bedarf
-* Vollbild-Anzeige mit Spinner während Bildvorbereitung
-
-= ⚡ Performance (1 Modul) =
-
-**11. Emoji Bloat Remover**
-Entfernt unnötige WordPress-Emoji-Ressourcen:
-* Entfernt Emoji-Detection-Script (wp-emoji-release.min.js)
-* Entfernt Emoji-CSS
-* Betrifft Frontend UND Admin
-* Spart ca. 15-20KB pro Seitenaufruf
-
-= 🔒 Sicherheit & Admin (4 Module) =
-
-**12. XML-RPC Blocker**
-Deaktiviert die XML-RPC-Schnittstelle komplett:
-* Schützt vor Brute-Force-Angriffen
-* Schließt potenzielle Sicherheitslücke
-* Einfacher Ein-Zeilen-Filter
-* Hinweis: Deaktiviert auch Apps, die XML-RPC benötigen (z.B. WordPress Mobile App)
-
-**13. Login Türsteher**
-Versteckt die Login-Seite hinter einem geheimen Parameter:
-* Zugriff nur via: `wp-login.php?DEIN_SCHLUESSEL`
-* Ohne Parameter → Redirect zur Startseite
-* Konfigurierbarer Schlüssel in den Einstellungen
-* Standard: "hintereingang"
-* Einfacher Schutz gegen automatisierte Angriffe
-
-**14. Comment Blocker**
-Deaktiviert Kommentare global und gründlich:
-* Entfernt Kommentar-Support von allen Post-Types
-* Versteckt Kommentar-Menü im Admin
-* Entfernt Dashboard-Widget "Letzte Kommentare"
-* Entfernt Meta-Boxen aus dem Editor
-* Schließt bestehende Kommentare (Filter)
-* Deaktiviert Kommentar-Feed
-* Entfernt Feed-Links aus dem Header
-* Versteckt Kommentar-Spalte in Listen
-* Bulk-Aktion zum Schließen bestehender Kommentare
-* Optionale Funktion: Alle DB-Einträge schließen (manuell aufrufbar)
-
-**15. ID Column Display**
-Zeigt die Post/Page/Media-ID in allen Admin-Übersichten:
-* Spalte direkt nach der Checkbox
-* Klick auf ID kopiert sie in die Zwischenablage
-* Sortierbar
-* Funktioniert für Posts, Pages, Media UND Custom Post Types
-* Responsive: Versteckt auf Mobilgeräten
-
-= 📝 Content Tools (2 Module) =
-
-**16. Date Shortcode**
-Fügt das aktuelle Datum dynamisch ein:
-
-Shortcodes:
-* `[seowk_date]` oder `[datum]` - Standard-Format (TT.MM.JJJJ)
-* `[jahr]` - Nur das Jahr
-* `[monat]` - Nur der Monat (deutsch)
-
-Attribute:
-* `format` - Vordefiniert: numeric, numeric_short, full, full_day, month_year, year, month, day, iso, us, time, datetime
-* `format` - Oder eigenes PHP-Datumsformat
-* `timezone` - Zeitzone (z.B. "Europe/Berlin")
-* `prefix` - Text vor dem Datum
-* `suffix` - Text nach dem Datum
-* `wrapper` - HTML-Tag (span, time, div, p, strong, em)
-* `class` - CSS-Klasse
-* `lang` - "de" für deutsche Monatsnamen (Standard)
-
-Beispiele:
-* `[datum format="full"]` → 10. Januar 2026
-* `[datum format="full_day"]` → Samstag, 10. Januar 2026
-* `[datum prefix="Stand: " suffix=" Uhr" format="datetime"]` → Stand: 10.01.2026 14:30 Uhr
-* `[datum wrapper="time" class="updated"]` → `<time datetime="..." class="updated">10.01.2026</time>`
-
-**17. Semantic Blocks**
-HTML5-semantische Wrapper-Blöcke für bessere Dokumentstruktur:
-
-Verfügbare Blöcke:
-* `<article>` - Eigenständiger Inhalt
-* `<section>` - Thematischer Abschnitt
-* `<aside>` - Ergänzender Inhalt
-* `<header>` - Einleitungsbereich
-* `<footer>` - Fußbereich
-* `<main>` - Hauptinhalt
-* `<figure>` - Abbildung mit Caption
-* `<address>` - Kontaktinformationen
-* `<details>` + `<summary>` - Aufklappbarer Bereich
-* `<mark>` - Hervorgehobener Text
-
-Attribute für alle Blöcke:
-* CSS-Klasse
-* CSS-ID
-
-Hinweis: Diese Blöcke sind serverseitig registriert. Editor-UI wird in zukünftigen Versionen hinzugefügt.
-
-= 🗑️ Saubere Deinstallation =
-
-Beim Löschen des Plugins über "Plugins → Löschen" werden automatisch alle Daten entfernt:
-
-* Plugin-Einstellungen (`seowk_settings`)
-* Alle Post-Meta-Daten (SEO-Titel, Descriptions, OG-Tags, Schema, NoIndex, Conversion-Tracking)
-* User-Meta-Daten (z.B. dismissed Notices)
-* Transients
-* Bei Multisite: Daten auf allen Sites
-
-**Hinweis:** Deaktivieren allein löscht keine Daten – nur das vollständige Löschen des Plugins.
-
----
-
-🇬🇧 **ENGLISH DESCRIPTION**
-
-SEO Wunderkiste combines **18 powerful modules** in a single plugin. To protect your site's performance, all modules are disabled by default. Enable only the features you actually need – under "Settings → SEO Wunderkiste".
-
-**The concept:** No bloatware, no overhead. Each module only loads when active.
-
-= 🔍 SEO & Content (5 Modules) =
-
-**1. SEO Meta Settings**
-Extended meta tag management per page/post:
-* Custom SEO title (max. 60 characters)
-* Meta description (max. 160 characters)
-* Robots tag control (index/noindex, follow/nofollow)
-* Open Graph tags (og:title, og:description, og:image)
+* Custom SEO title and meta description
+* Robots directives, merged into the robots tag WordPress already prints
+* Open Graph tags (og:title, og:description, og:image) with the featured image as fallback
 * Twitter Card tags
-* Automatic canonical URLs
-* Fallback to featured image when no OG image is set
 
-**2. SEO Schema (JSON-LD)**
-Adds a text field in the editor to insert custom structured data (Schema.org):
-* Input as pure JSON (without script tags)
-* Validation before output
-* Supports all Schema.org types (Article, Product, FAQ, LocalBusiness, etc.)
+**SEO Schema (JSON-LD)**
+A meta box for custom structured data (Schema.org). Enter plain JSON without script tags. Invalid JSON is flagged in the editor and never printed on the frontend.
 
-**3. Bulk NoIndex Manager**
-Mass indexing control:
-* Bulk action "Set NoIndex" for posts and pages
-* Bulk action "Remove NoIndex"
-* Visual column shows indexing status (✓ Index / ✗ NoIndex)
-* Automatic meta robots output in frontend
+**Bulk NoIndex Manager**
 
-**4. SEO Zombie Killer (Attachment Redirects)**
-Eliminates "zombie pages" – those useless attachment URLs WordPress creates for every image:
-* 301 redirect to parent post (if exists)
-* 302 redirect to homepage (for orphaned attachments)
-* Improves crawl budget and prevents duplicate content
+* Bulk actions "Set NoIndex" and "Remove NoIndex" for posts and pages
+* Status column in the post list
+* NoIndex always takes priority over other robots settings
 
-**5. Conversion Tracker**
-GA4 and Google Ads conversion tracking per page:
-* Google Analytics 4: Event name + optional value
-* Google Ads: Conversion ID + Label + Value
-* Ideal for thank-you pages after form submission
-* Admin column shows active tracking (GA4 / Ads)
+**Attachment Redirects ("SEO Zombie Killer")**
+Redirects the empty attachment pages WordPress creates for every upload: 301 to the parent post, or 302 to the homepage for unattached files.
 
-= 🖼️ Image & Media (6 Modules) =
+**Conversion Tracker**
+Fires GA4 events and Google Ads conversions on selected pages, e.g. thank-you pages. Event name, conversion ID, label, value and currency are configurable. The module only calls an existing `gtag()` on your site; it does not load any Google script itself.
 
-**6. Image Resizer (800px / 1200px)**
-Scales images with one click in the media library:
-* Two target sizes: 800px or 1200px (longest side)
-* 92% JPEG quality for optimal balance
-* Available in attachment detail and list view
-* Overwrites the original – ideal for large uploads
+= Images & Media =
 
-**7. Upload Cleaner**
-Automatically cleans filenames on upload:
-* Umlauts are converted (ä→ae, ö→oe, ü→ue, ß→ss)
-* Spaces become hyphens
-* Everything is lowercased
-* SEO-friendly URLs without manual work
+**Image Resizer (800px / 1200px)**
+Scales an image to 800 or 1200 px (longest side, 92% quality) with one click, in the attachment details, the media list, or as a bulk action. The original file is overwritten.
 
-**8. Zero-Click Image SEO**
-Automatic generation of SEO attributes on image upload:
-* Title is generated from filename (prettified)
-* Alt text is set automatically (if empty)
-* Hyphens/underscores become spaces
-* First letter of each word capitalized
+**Upload Cleaner**
+Cleans file names on upload: umlauts are transliterated (ä → ae, ß → ss), spaces become hyphens, everything is lowercased.
 
-**9. Media Inspector**
-Additional columns in the media overview:
-* File size (e.g., "245.32 KB")
-* Pixel dimensions (e.g., "1920 x 1080")
-* Quick overview without opening each image
+**Zero-Click Image SEO**
+Generates the image title and, if empty, the alt text from the file name on upload.
 
-**10. SVG Upload Support**
-Enables secure SVG uploads:
-* MIME type registration for .svg and .svgz
-* Automatic sanitization: Removes scripts, event handlers, dangerous attributes
-* Preview in media library works
-* Dimensions extracted from viewBox/width/height
-* Admin notice informs about active sanitization
+**Media Inspector**
+Adds file size and pixel dimensions columns to the media library.
 
-**11. Decent Lightbox**
-Lightweight image lightbox – enable per image in the media library:
-* Vanilla JavaScript, no external dependencies (jQuery-free)
-* Toggle via checkbox in media library item details
-* Keyboard navigation (ESC to close, Tab-trap)
-* Respects `prefers-reduced-motion`
-* Lazy DOM build, only loaded when needed
-* Full-screen display with spinner during image preload
+**SVG Upload Support**
+Allows SVG and SVGZ uploads for users with the `unfiltered_html` capability (filterable via `seowk_svg_upload_capability`). Every file is sanitized with the bundled enshrined/svg-sanitize library.
 
-= ⚡ Performance (1 Module) =
+**Decent Lightbox**
+Lightweight lightbox that is enabled per image in the media library. Vanilla JavaScript, keyboard accessible (Esc, focus trap), respects `prefers-reduced-motion`.
 
-**11. Emoji Bloat Remover**
-Removes unnecessary WordPress emoji resources:
-* Removes emoji detection script (wp-emoji-release.min.js)
-* Removes emoji CSS
-* Affects frontend AND admin
-* Saves approx. 15-20KB per page load
+= Performance =
 
-= 🔒 Security & Admin (4 Modules) =
+**Emoji Bloat Remover**
+Removes the WordPress emoji detection script and styles.
 
-**12. XML-RPC Blocker**
-Completely disables the XML-RPC interface:
-* Protects against brute-force attacks
-* Closes potential security vulnerability
-* Simple one-line filter
-* Note: Also disables apps that need XML-RPC (e.g., WordPress Mobile App)
+= Security & Admin =
 
-**13. Login Guardian**
-Hides the login page behind a secret parameter:
-* Access only via: `wp-login.php?YOUR_KEY`
-* Without parameter → Redirect to homepage
-* Configurable key in settings
-* Default: "hintereingang"
-* Simple protection against automated attacks
+**XML-RPC Blocker**
+Disables the XML-RPC interface. Note: apps that rely on XML-RPC stop working.
 
-**14. Comment Blocker**
-Disables comments globally and thoroughly:
-* Removes comment support from all post types
-* Hides comment menu in admin
-* Removes dashboard widget "Recent Comments"
-* Removes meta boxes from editor
-* Closes existing comments (filter)
-* Disables comment feed
-* Removes feed links from header
-* Hides comment column in lists
-* Bulk action to close existing comments
-* Optional function: Close all DB entries (manually callable)
+**Login Guard ("Login Türsteher")**
+Hides the login form behind a secret key: `wp-login.php?YOURKEY`. There is no default key; the module does nothing until you set one. Logout, password reset, protected posts and recovery mode keep working.
 
-**15. ID Column Display**
-Shows Post/Page/Media ID in all admin overviews:
-* Column right after checkbox
-* Click on ID copies it to clipboard
-* Sortable
-* Works for Posts, Pages, Media AND Custom Post Types
-* Responsive: Hidden on mobile
+**Comment Blocker**
+Disables comments site-wide: post type support, admin menu, dashboard widget, meta boxes, feeds and list columns. WooCommerce product reviews are left alone (filterable via `seowk_comment_blocker_exempt_post_types`).
 
-= 📝 Content Tools (2 Modules) =
+**ID Column Display**
+Shows a sortable ID column for posts, pages, media and custom post types. Click an ID to copy it.
 
-**16. Date Shortcode**
-Dynamically inserts the current date:
+= Content Tools =
 
-Shortcodes:
-* `[seowk_date]` or `[datum]` - Default format (DD.MM.YYYY)
-* `[jahr]` - Year only
-* `[monat]` - Month only (German)
+**Date Shortcode**
+Prints the current date: `[seowk_date]`, plus the aliases `[datum]`, `[jahr]` (year) and `[monat]` (month).
 
-Attributes:
-* `format` - Predefined: numeric, numeric_short, full, full_day, month_year, year, month, day, iso, us, time, datetime
-* `format` - Or custom PHP date format
-* `timezone` - Timezone (e.g., "Europe/Berlin")
-* `prefix` - Text before date
-* `suffix` - Text after date
-* `wrapper` - HTML tag (span, time, div, p, strong, em)
-* `class` - CSS class
-* `lang` - "de" for German month names (default)
+Attributes: `format` (presets such as `numeric`, `full`, `full_day`, `month_year`, `iso`, `us`, `datetime`, or any PHP date format), `timezone`, `prefix`, `suffix`, `wrapper` (span, time, div, p, strong, em), `class`, `lang` (month and day names follow the site language by default; `de` or `en` forces a language).
 
-Examples:
-* `[datum format="full"]` → 10. Januar 2026
-* `[datum format="full_day"]` → Saturday, January 10, 2026
-* `[datum prefix="As of: " suffix=" hrs" format="datetime"]` → As of: 01/10/2026 14:30 hrs
+Example: `[seowk_date format="full"]`
 
-**17. Semantic Blocks**
-HTML5 semantic wrapper blocks for better document structure:
+**Semantic Blocks**
+HTML5 wrapper blocks for the block editor: article, section, aside, header, footer, main, figure, address, details/summary and mark, each with optional CSS class and ID.
 
-Available blocks:
-* `<article>` - Self-contained content
-* `<section>` - Thematic section
-* `<aside>` - Complementary content
-* `<header>` - Introductory area
-* `<footer>` - Footer area
-* `<main>` - Main content
-* `<figure>` - Figure with caption
-* `<address>` - Contact information
-* `<details>` + `<summary>` - Collapsible area
-* `<mark>` - Highlighted text
+= Clean uninstall =
 
-Attributes for all blocks:
-* CSS class
-* CSS ID
-
-Note: These blocks are server-side registered. Editor UI will be added in future versions.
-
-= 🗑️ Clean Uninstall =
-
-When deleting the plugin via "Plugins → Delete", all data is automatically removed:
-
-* Plugin settings (`seowk_settings`)
-* All post meta data (SEO titles, descriptions, OG tags, Schema, NoIndex, Conversion tracking)
-* User meta data (e.g., dismissed notices)
-* Transients
-* On Multisite: Data on all sites
-
-**Note:** Deactivating alone does not delete any data – only completely deleting the plugin does.
+Deleting the plugin via "Plugins → Delete" removes its settings, post meta, user meta and transients, on every site of a multisite network. Deactivating alone keeps all data.
 
 == Installation ==
 
-🇩🇪 **Deutsche Anleitung:**
-
-1. Lade den Ordner 'seo-wunderkiste' nach `/wp-content/plugins/` hoch
-2. Aktiviere das Plugin über das "Plugins"-Menü in WordPress
-3. Gehe zu "Einstellungen → SEO Wunderkiste"
-4. Aktiviere nur die Module, die du benötigst
-5. Speichere die Einstellungen
-
-🇬🇧 **English Instructions:**
-
-1. Upload the 'seo-wunderkiste' folder to `/wp-content/plugins/`
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to "Settings → SEO Wunderkiste"
-4. Enable only the modules you need
-5. Save settings
+1. Upload the `wunderkiste-toolkit` folder to `/wp-content/plugins/`, or install the plugin from the WordPress plugin directory.
+2. Activate the plugin through the "Plugins" screen.
+3. Go to "Settings → Wunderkiste Toolkit".
+4. Enable the modules you need and save.
 
 == Frequently Asked Questions ==
 
-= 🇩🇪 Sind alle Module standardmäßig aktiv? | 🇬🇧 Are all modules active by default? =
+= Are all modules active by default? =
 
-🇩🇪 Nein, alle Module sind standardmäßig deaktiviert. Aktiviere nur, was du brauchst.
+No. Every module is disabled until you enable it.
 
-🇬🇧 No, all modules are disabled by default. Enable only what you need.
+= Does it work alongside other SEO plugins? =
 
-= 🇩🇪 Ist das Plugin mit anderen SEO-Plugins kompatibel? | 🇬🇧 Is this plugin compatible with other SEO plugins? =
+Yes, but disable overlapping modules. For example, do not use SEO Meta Settings together with Yoast SEO or Rank Math.
 
-🇩🇪 Ja, aber wir empfehlen, überlappende Funktionen zu deaktivieren (z.B. Meta Settings, wenn du Yoast nutzt).
+= Are SVG uploads safe? =
 
-🇬🇧 Yes, but we recommend disabling overlapping features (e.g., Meta Settings if you use Yoast).
+Every SVG is sanitized on upload (scripts, event handlers, external references are removed), and only users who may post unfiltered HTML can upload SVGs.
 
-= 🇩🇪 Ist der SVG-Upload ein Sicherheitsrisiko? | 🇬🇧 Does SVG upload pose a security risk? =
+= I enabled the Login Guard and forgot the key. What now? =
 
-🇩🇪 Nein, SVG-Dateien werden beim Upload automatisch bereinigt. Scripts und Event-Handler werden entfernt.
+Rename the plugin folder via FTP to deactivate it, or look up the key in the `seowk_settings` option in the `wp_options` table.
 
-🇬🇧 No, SVG files are automatically sanitized on upload. Scripts and event handlers are removed.
+= Can I change the conversion currency? =
 
-= 🇩🇪 Was passiert, wenn ich den Login-Türsteher aktiviere und den Schlüssel vergesse? | 🇬🇧 What happens if I enable Login Guardian and forget the key? =
+Yes, under "Settings → Wunderkiste Toolkit → Additional settings", or with the `seowk_conversion_currency` filter.
 
-🇩🇪 Du kannst das Plugin per FTP deaktivieren (Ordner umbenennen) oder in der Datenbank den Schlüssel in `wp_options` → `seowk_settings` nachschlagen.
+= Is the plugin available in German? =
 
-🇬🇧 You can disable the plugin via FTP (rename folder) or look up the key in the database at `wp_options` → `seowk_settings`.
-
-= 🇩🇪 Warum sehe ich die Semantic Blocks nicht im Editor? | 🇬🇧 Why don't I see Semantic Blocks in the editor? =
-
-🇩🇪 Die Blöcke sind derzeit nur serverseitig registriert. Editor-JavaScript wird in einer zukünftigen Version hinzugefügt. Du kannst sie aktuell als HTML-Block verwenden.
-
-🇬🇧 The blocks are currently only server-side registered. Editor JavaScript will be added in a future version. You can currently use them as HTML blocks.
-
-= 🇩🇪 Kann ich die Währung im Conversion Tracker ändern? | 🇬🇧 Can I change the currency in Conversion Tracker? =
-
-🇩🇪 Derzeit ist EUR fest eingestellt. Filter für eigene Währung kommt in zukünftiger Version.
-
-🇬🇧 Currently EUR is hardcoded. Filter for custom currency coming in future version.
+Yes. A German translation (de_DE and de_AT) is included, and the interface switches automatically with the site or user language. Language packs from translate.wordpress.org take priority once they exist. German documentation is available at https://designare.at/wunderkiste-toolkit.
 
 == Screenshots ==
 
-1. Admin-Einstellungsseite mit allen Modulen | Admin settings page with all modules
-2. SEO Meta Settings Meta-Box | SEO Meta Settings meta box
-3. Mediathek mit Resizer-Buttons und Inspector-Spalten | Media library with resizer buttons and inspector columns
-4. NoIndex-Status-Spalte in der Beitragsübersicht | NoIndex status column in post overview
-5. Conversion Tracker Meta-Box | Conversion Tracker meta box
+1. Settings page with all modules
+2. SEO Meta Settings meta box
+3. Media library with resizer buttons and inspector columns
+4. NoIndex status column in the post list
+5. Conversion Tracker meta box
 
 == Changelog ==
 
+= 2.12 =
+* Renamed from "SEO Wunderkiste" to "Wunderkiste Toolkit" (slug and text domain `wunderkiste-toolkit`). Settings and post data are kept.
+* Security: the image resizer bulk log no longer inserts attachment titles as HTML (DOM XSS). All resizer output is escaped.
+* Fix: JSON-LD containing escaped quotes (\") was corrupted on save.
+* Fix: SEO Meta Settings and Bulk NoIndex no longer print a second robots tag and a second canonical link; they now use the core `wp_robots` filter.
+* Fix: resize status messages now also show in the media list view.
+* All functions, classes and constants use the `seowk` prefix (lightbox and resizer included).
+* Translations are loaded by WordPress; the plugin no longer creates a `languages` folder inside its own directory.
+* Uninstall uses the metadata API instead of a direct database query.
+* The interface is now English, with a bundled German translation (de_DE, de_AT) for PHP and JavaScript strings.
+* Date shortcode: month and day names follow the site language by default; `lang="de"` or `lang="en"` still forces a language.
+* The lightbox no longer loads wp-i18n on the frontend.
+* readme rewritten in English.
+
 = 2.11 =
-* **Sicherheit (hoch):** Der SVG-Sanitizer wurde durch die Bibliothek enshrined/svg-sanitize 0.22.0 ersetzt (mitgeliefert unter includes/vendor/, GPL-2.0-or-later). Die bisherige Eigenbau-Filterung war wirkungslos: ihre XPath-Abfragen fanden keine Elemente im SVG-Namespace, wodurch ein normkonformes SVG mit <script>-Tag unveraendert durchging.
-* **Sicherheit (hoch):** SVG-Uploads erfordern jetzt die Berechtigung `unfiltered_html` (filterbar ueber `seowk_svg_upload_capability`) statt nur `upload_files`.
-* **Sicherheit (hoch):** Stored XSS im JSON-LD-Feld geschlossen. Die Ausgabe nutzt JSON_HEX_TAG statt JSON_UNESCAPED_SLASHES, ein `</script>` in einem Textwert kann den Script-Block nicht mehr vorzeitig beenden.
-* **Sicherheit (mittel):** Der Image Resizer prueft jetzt `edit_post` auf das konkrete Attachment und laesst nicht mehr den Request ueber das Feld `is_bulk` entscheiden, welche Nonce geprueft wird.
-* **Sicherheit (niedrig):** Bulk NoIndex prueft die Bearbeitungsrechte pro Beitrag.
-* **Sicherheit (niedrig):** Die Ausgabe des Datums-Shortcodes wird escaped.
-* Zusaetzlich werden `@import` und externe `url()`-Referenzen aus `<style>`-Bloecken in SVGs entfernt.
-* SVGZ-Uploads funktionieren (werden entpackt, bereinigt und wieder komprimiert) statt pauschal abgelehnt zu werden.
-* SVG-Masse werden aus width/height bzw. viewBox ausgelesen, dadurch korrekte Vorschau und Bildgroessen.
-* **Login Tuersteher komplett neu.** Die alte Fassung leitete auch den POST des Login-Formulars um und sperrte damit alle Benutzer aus. Neu: nur GET-Anfragen auf die Login-Maske werden gefiltert, der Zugang wird ueber ein kurzlebiges HttpOnly-Cookie gemerkt, Logout, Passwort-Reset, geschuetzte Beitraege und Recovery-Modus bleiben erreichbar.
-* Der veroeffentlichte Standardschluessel "hintereingang" wurde entfernt. Ohne eigenen Schluessel bleibt das Modul wirkungslos und weist im Backend darauf hin.
-* **Comment Blocker nimmt WooCommerce-Produkte aus.** Produktbewertungen sind technisch Kommentare und wurden bisher mit abgeschaltet. Filterbar ueber `seowk_comment_blocker_exempt_post_types`.
-* Comment Blocker entfernt nur noch den Kommentar-Feed-Link statt `feed_links_extra` komplett (das nahm auch Kategorie-, Schlagwort- und Autoren-Feeds mit).
-* Meta Settings und Bulk NoIndex geben nur noch ein einziges robots-Meta aus; ein gesetztes NoIndex hat Vorrang.
-* `og:locale` folgt der Sprache der Website statt fest auf de_DE zu stehen.
-* Semantic Blocks auf Block-API v3 umgestellt (noetig fuer den iframed Editor ab WordPress 7.1).
-* Lightbox: PHP-8.0-only Typdeklaration entfernt, Textdomain und Script-Handles vereinheitlicht, Filter gegen `null`-Werte abgesichert.
-* Textdomain wird auf `init` geladen (Vorgabe seit WordPress 6.7).
-* Console-Ausgabe im Backend nur noch bei aktivem WP_DEBUG.
-* Uninstall raeumt in Multisite-Installationen jetzt auch Post-Meta aller Sites auf; das pauschale `wp_cache_flush()` entfaellt.
-* Kompatibilitaetsangaben korrigiert: Mindestens WordPress 6.3 (der Code nutzt WP_HTML_Tag_Processor und die strategy-Option von wp_register_script), getestet bis WordPress 7.0.
+* Security: SVG sanitizing now uses the bundled enshrined/svg-sanitize 0.22.0 library. The previous filter missed elements in the SVG namespace.
+* Security: SVG uploads require `unfiltered_html` (filter `seowk_svg_upload_capability`).
+* Security: closed a stored XSS in the JSON-LD output.
+* Security: the image resizer checks `edit_post` on the attachment and no longer lets the request choose which nonce to verify.
+* Security: Bulk NoIndex checks edit rights per post; the date shortcode output is escaped.
+* SVG: `@import` and external `url()` references are removed from style blocks; SVGZ uploads are supported; dimensions are read from width/height or viewBox.
+* Login Guard rewritten: only GET requests to the login form are filtered, access is remembered in a short-lived HttpOnly cookie, and the published default key was removed.
+* Comment Blocker leaves WooCommerce product reviews alone and only removes the comment feed link.
+* `og:locale` follows the site language.
+* Semantic Blocks use block API v3.
+* Debug console output only with WP_DEBUG.
+* Multisite uninstall cleans post meta on all sites.
 
 = 2.10 =
-* NEU: Decent Lightbox als integriertes Modul (vormals eigenständiges Plugin)
-* NEU: Pro-Bild aktivierbare Lightbox direkt in der Mediathek
-* VERBESSERT: Plugin-Meta-Links zeigen jetzt auf designare.at
-* NEW: Decent Lightbox integrated as a module (previously a standalone plugin)
-* NEW: Per-image enabled lightbox directly in the media library
-* IMPROVED: Plugin meta links now point to designare.at
+* New: Decent Lightbox integrated as a module (previously a standalone plugin).
 
 = 2.7 =
-* NEU: Semantic Blocks Modul mit 10 HTML5-Wrapper-Blöcken
-* NEU: Gutenberg-Block für Date Shortcode
-* VERBESSERT: Image Resizer bietet jetzt 800px UND 1200px Optionen
-* VERBESSERT: SVG-Sanitization für bessere Sicherheit
-* VERBESSERT: Code-Qualität und WordPress Coding Standards Compliance
-* NEW: Semantic Blocks module with 10 HTML5 wrapper blocks
-* NEW: Gutenberg block for Date Shortcode
-* IMPROVED: Image Resizer now offers 800px AND 1200px options
-* IMPROVED: SVG sanitization for better security
-* IMPROVED: Code quality and WordPress coding standards compliance
+* New: Semantic Blocks module with 10 HTML5 wrapper blocks.
+* New: block for the date shortcode.
+* Image Resizer offers 800px and 1200px.
 
 = 2.6 =
-* NEU: Date Shortcode Modul mit 12+ Formaten und Zeitzonen-Support
-* NEW: Date Shortcode module with 12+ formats and timezone support
+* New: Date Shortcode module.
 
 = 2.5 =
-* NEU: SEO Meta Settings Modul mit Open Graph und Twitter Cards
-* NEW: SEO Meta Settings module with Open Graph and Twitter Cards
+* New: SEO Meta Settings with Open Graph and Twitter Cards.
 
 = 2.4 =
-* NEU: Conversion Tracker für GA4 und Google Ads
-* NEU: ID Column Display mit Kopier-Funktion
-* NEW: Conversion Tracker for GA4 and Google Ads
-* NEW: ID Column Display with copy function
+* New: Conversion Tracker for GA4 and Google Ads.
+* New: ID Column Display.
 
 = 2.3 =
-* NEU: Bulk NoIndex Manager
-* NEU: Comment Blocker (umfassende Kommentar-Deaktivierung)
-* NEW: Bulk NoIndex Manager
-* NEW: Comment Blocker (comprehensive comment disabling)
+* New: Bulk NoIndex Manager and Comment Blocker.
 
 = 2.2 =
-* NEU: SVG Upload Support mit Sicherheits-Sanitization
-* NEU: Media Inspector (Dateigröße und Maße)
-* NEW: SVG Upload Support with security sanitization
-* NEW: Media Inspector (file size and dimensions)
+* New: SVG Upload Support and Media Inspector.
 
 = 2.1 =
-* NEU: Login Türsteher (geheimer Login-Parameter)
-* NEU: SEO Zombie Killer (Attachment Redirects)
-* NEW: Login Guardian (secret login parameter)
-* NEW: SEO Zombie Killer (Attachment Redirects)
+* New: Login Guard and attachment redirects.
 
 = 2.0 =
-* Komplette Neustrukturierung als modulares Plugin
-* Alle Module standardmäßig deaktiviert
-* Complete restructuring as modular plugin
-* All modules disabled by default
+* Rebuilt as a modular plugin; all modules disabled by default.
 
 = 1.0 =
-* Erste Veröffentlichung
-* Initial release
+* Initial release.
 
 == Upgrade Notice ==
 
-= 2.7 =
-Major Update: Semantic Blocks, verbesserter Gutenberg-Support und verstärkte Sicherheit. | Major update: Semantic Blocks, improved Gutenberg support, and enhanced security.
+= 2.12 =
+The plugin is now called "Wunderkiste Toolkit" and lives in the folder `wunderkiste-toolkit`. When updating manually from "SEO Wunderkiste", deactivate the old plugin first; your settings are kept.
 
-== Technical Review / Technische Bewertung ==
+== Third-party libraries ==
 
-= 🇩🇪 Bewertung =
-
-**Gesamtnote: 7.5/10**
-
-**Stärken:**
-✅ Modulares Design – vorbildlich umgesetzt
-✅ Performance-bewusst – lädt nur aktive Module
-✅ WordPress Coding Standards größtenteils eingehalten
-✅ Sicherheit: Nonces, Sanitization, Escaping korrekt
-✅ SVG-Sanitization professionell implementiert
-✅ Saubere Datei-Architektur
-
-**Verbesserungspotenzial:**
-⚠️ `load_plugin_textdomain()` fehlt (Übersetzungen nicht ladbar)
-⚠️ Semantic Blocks ohne Editor-JavaScript
-⚠️ Keine `uninstall.php` (Datenbank-Cleanup)
-⚠️ Hardcoded Währung (EUR) im Conversion Tracker
-⚠️ Globale Variable `$seowk_options`
-
-**Mehrwert-Bewertung: 8/10**
-Das Plugin bietet echten Nutzen für WordPress-Betreiber, die keine großen All-in-One SEO-Suiten brauchen. Die Kombination aus SEO-Tools, Bild-Optimierung und Sicherheit in einem modularen Ansatz ist durchdacht.
-
-= 🇬🇧 Review =
-
-**Overall Score: 7.5/10**
-
-**Strengths:**
-✅ Modular design – excellently implemented
-✅ Performance-conscious – loads only active modules
-✅ WordPress Coding Standards mostly followed
-✅ Security: Nonces, sanitization, escaping correct
-✅ SVG sanitization professionally implemented
-✅ Clean file architecture
-
-**Room for Improvement:**
-⚠️ `load_plugin_textdomain()` missing (translations not loadable)
-⚠️ Semantic Blocks without editor JavaScript
-⚠️ No `uninstall.php` (database cleanup)
-⚠️ Hardcoded currency (EUR) in Conversion Tracker
-⚠️ Global variable `$seowk_options`
-
-**Value Assessment: 8/10**
-The plugin offers real value for WordPress operators who don't need large all-in-one SEO suites. The combination of SEO tools, image optimization, and security in a modular approach is well thought out.
-
-== Additional Resources ==
-
-🇩🇪 Für deutsche Dokumentation, besuche die Plugin-Einstellungsseite nach der Aktivierung.
-🇬🇧 For documentation, visit the plugin settings page after activation.
-
-== Credits ==
-
-Developed with ❤️ by Michael Kanda
-https://designare.at
+* enshrined/svg-sanitize 0.22.0 (GPL-2.0-or-later), bundled in `includes/vendor/svg-sanitize/`.

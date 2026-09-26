@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Comment Blocker (Globale Kommentar-Deaktivierung)
+ * MODULE: Comment Blocker (site-wide comment shutdown)
  * ------------------------------------------------------------------------- */
 
 /**
@@ -98,7 +98,7 @@ add_filter( 'pings_open', 'seowk_disable_existing_comments', 20, 2 );
 
 function seowk_disable_comments_feed() {
     if ( is_comment_feed() ) {
-        wp_die( esc_html__( 'Kommentare sind auf dieser Website deaktiviert.', 'seo-wunderkiste' ), '', array( 'response' => 403 ) );
+        wp_die( esc_html__( 'Comments are disabled on this site.', 'wunderkiste-toolkit' ), '', array( 'response' => 403 ) );
     }
 }
 add_action( 'do_feed_rss2_comments', 'seowk_disable_comments_feed', 1 );

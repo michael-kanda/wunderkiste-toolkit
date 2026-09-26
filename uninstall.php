@@ -1,21 +1,21 @@
 <?php
 /**
- * SEO Wunderkiste Uninstall
+ * Wunderkiste Toolkit Uninstall
  *
- * Wird ausgeführt, wenn das Plugin über das WordPress-Admin deinstalliert wird.
- * Entfernt alle Plugin-Optionen und Post-Meta-Daten aus der Datenbank.
+ * Runs when the plugin is deleted from the WordPress admin.
+ * Removes all plugin options and post meta from the database.
  *
- * @package SEO_Wunderkiste
+ * @package Wunderkiste_Toolkit
  * @since 2.8
  */
 
-// Sicherheitscheck: Nur ausführen, wenn von WordPress aufgerufen
+// Security check: only run when called by WordPress
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
     exit;
 }
 
 /* ------------------------------------------------------------------------- *
- * AUFRÄUMEN PRO SITE
+ * CLEAN UP PER SITE
  * ------------------------------------------------------------------------- */
 
 /**
@@ -24,8 +24,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * @return void
  */
 function seowk_uninstall_cleanup_site() {
-    global $wpdb;
-
     delete_option( 'seowk_settings' );
     delete_transient( 'seowk_activation_notice' );
 
@@ -65,13 +63,14 @@ function seowk_uninstall_cleanup_site() {
         'seowk_svg_notice_dismissed',
     );
 
+    // delete_all = true removes the key for every user and keeps the meta cache consistent.
     foreach ( $user_meta_keys as $user_meta_key ) {
-        $wpdb->delete( $wpdb->usermeta, array( 'meta_key' => $user_meta_key ), array( '%s' ) );
+        delete_metadata( 'user', 0, $user_meta_key, '', true );
     }
 }
 
 /* ------------------------------------------------------------------------- *
- * AUSFÜHREN - EINZELSITE ODER MULTISITE
+ * RUN - SINGLE SITE OR MULTISITE
  * ------------------------------------------------------------------------- */
 
 /*

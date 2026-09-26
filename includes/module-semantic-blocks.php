@@ -2,20 +2,20 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: SEMANTIC BLOCKS - SEO Wunderkiste
- * Version: 2.9 - Mit eigenem Block-Abschnitt und konfigurierbaren Icons
- * Semantische HTML5 Wrapper-Blöcke
+ * MODULE: SEMANTIC BLOCKS - Wunderkiste Toolkit
+ * Version: 2.9 - with its own block category and configurable icons
+ * Semantic HTML5 wrapper blocks
  * ------------------------------------------------------------------------- */
 
 /**
- * Eigene Block-Kategorie "Semantic Blocks" registrieren
+ * Register a custom "Semantic Blocks" block category
  */
 function seowk_register_block_category( $categories ) {
     return array_merge(
         array(
             array(
                 'slug'  => 'seowk-semantic',
-                'title' => __( 'Semantic Blocks', 'seo-wunderkiste' ),
+                'title' => __( 'Semantic Blocks', 'wunderkiste-toolkit' ),
                 'icon'  => 'code-standards',
             ),
         ),
@@ -25,52 +25,52 @@ function seowk_register_block_category( $categories ) {
 add_filter( 'block_categories_all', 'seowk_register_block_category', 10, 1 );
 
 /**
- * Verfügbare Icons für Details/Accordion Block
+ * Available icons for the Details/Accordion block
  */
 function seowk_get_available_icons() {
     return array(
         'arrow'    => array(
-            'label'  => __( 'Pfeil', 'seo-wunderkiste' ),
+            'label'  => __( 'Arrow', 'wunderkiste-toolkit' ),
             'closed' => '▶',
             'open'   => '▼',
         ),
         'plus'     => array(
-            'label'  => __( 'Plus/Minus', 'seo-wunderkiste' ),
+            'label'  => __( 'Plus/Minus', 'wunderkiste-toolkit' ),
             'closed' => '+',
             'open'   => '−',
         ),
         'chevron'  => array(
-            'label'  => __( 'Chevron', 'seo-wunderkiste' ),
+            'label'  => __( 'Chevron', 'wunderkiste-toolkit' ),
             'closed' => '›',
             'open'   => '⌄',
         ),
         'caret'    => array(
-            'label'  => __( 'Caret', 'seo-wunderkiste' ),
+            'label'  => __( 'Caret', 'wunderkiste-toolkit' ),
             'closed' => '⯈',
             'open'   => '⯆',
         ),
         'folder'   => array(
-            'label'  => __( 'Ordner', 'seo-wunderkiste' ),
+            'label'  => __( 'Folder', 'wunderkiste-toolkit' ),
             'closed' => '📁',
             'open'   => '📂',
         ),
         'circle'   => array(
-            'label'  => __( 'Kreis', 'seo-wunderkiste' ),
+            'label'  => __( 'Circle', 'wunderkiste-toolkit' ),
             'closed' => '⊕',
             'open'   => '⊖',
         ),
         'square'   => array(
-            'label'  => __( 'Quadrat', 'seo-wunderkiste' ),
+            'label'  => __( 'Square', 'wunderkiste-toolkit' ),
             'closed' => '⊞',
             'open'   => '⊟',
         ),
         'dot'      => array(
-            'label'  => __( 'Punkt', 'seo-wunderkiste' ),
+            'label'  => __( 'Dot', 'wunderkiste-toolkit' ),
             'closed' => '●',
             'open'   => '○',
         ),
         'none'     => array(
-            'label'  => __( 'Kein Icon', 'seo-wunderkiste' ),
+            'label'  => __( 'No icon', 'wunderkiste-toolkit' ),
             'closed' => '',
             'open'   => '',
         ),
@@ -82,51 +82,51 @@ function seowk_register_semantic_blocks() {
         return;
     }
 
-    // Blöcke mit InnerBlocks Support
+    // Blocks with InnerBlocks support
     $wrapper_blocks = array(
         'article' => array(
-            'title'       => __( 'Article', 'seo-wunderkiste' ),
-            'description' => __( 'Semantischer Container für eigenständige Inhalte.', 'seo-wunderkiste' ),
+            'title'       => __( 'Article', 'wunderkiste-toolkit' ),
+            'description' => __( 'Semantic container for self-contained content.', 'wunderkiste-toolkit' ),
             'icon'        => 'media-text',
         ),
         'section' => array(
-            'title'       => __( 'Section', 'seo-wunderkiste' ),
-            'description' => __( 'Thematischer Abschnitt mit Überschrift.', 'seo-wunderkiste' ),
+            'title'       => __( 'Section', 'wunderkiste-toolkit' ),
+            'description' => __( 'Thematic section with a heading.', 'wunderkiste-toolkit' ),
             'icon'        => 'screenoptions',
         ),
         'aside'   => array(
-            'title'       => __( 'Aside', 'seo-wunderkiste' ),
-            'description' => __( 'Ergänzender Inhalt, Sidebar-Element.', 'seo-wunderkiste' ),
+            'title'       => __( 'Aside', 'wunderkiste-toolkit' ),
+            'description' => __( 'Complementary content, sidebar element.', 'wunderkiste-toolkit' ),
             'icon'        => 'align-right',
         ),
         'header'  => array(
-            'title'       => __( 'Header', 'seo-wunderkiste' ),
-            'description' => __( 'Einleitungsbereich eines Abschnitts.', 'seo-wunderkiste' ),
+            'title'       => __( 'Header', 'wunderkiste-toolkit' ),
+            'description' => __( 'Introductory area of a section.', 'wunderkiste-toolkit' ),
             'icon'        => 'arrow-up-alt',
         ),
         'footer'  => array(
-            'title'       => __( 'Footer', 'seo-wunderkiste' ),
-            'description' => __( 'Fußbereich eines Abschnitts.', 'seo-wunderkiste' ),
+            'title'       => __( 'Footer', 'wunderkiste-toolkit' ),
+            'description' => __( 'Footer area of a section.', 'wunderkiste-toolkit' ),
             'icon'        => 'arrow-down-alt',
         ),
         'main'    => array(
-            'title'       => __( 'Main', 'seo-wunderkiste' ),
-            'description' => __( 'Hauptinhalt der Seite (nur einmal pro Seite).', 'seo-wunderkiste' ),
+            'title'       => __( 'Main', 'wunderkiste-toolkit' ),
+            'description' => __( 'Main content of the page (only once per page).', 'wunderkiste-toolkit' ),
             'icon'        => 'editor-expand',
         ),
         'figure'  => array(
-            'title'       => __( 'Figure', 'seo-wunderkiste' ),
-            'description' => __( 'Abbildung mit optionaler Beschriftung.', 'seo-wunderkiste' ),
+            'title'       => __( 'Figure', 'wunderkiste-toolkit' ),
+            'description' => __( 'Figure with an optional caption.', 'wunderkiste-toolkit' ),
             'icon'        => 'format-image',
         ),
         'address' => array(
-            'title'       => __( 'Address', 'seo-wunderkiste' ),
-            'description' => __( 'Kontaktinformationen.', 'seo-wunderkiste' ),
+            'title'       => __( 'Address', 'wunderkiste-toolkit' ),
+            'description' => __( 'Contact information.', 'wunderkiste-toolkit' ),
             'icon'        => 'location',
         ),
         'nav'     => array(
-            'title'       => __( 'Nav', 'seo-wunderkiste' ),
-            'description' => __( 'Navigationsbereich.', 'seo-wunderkiste' ),
+            'title'       => __( 'Nav', 'wunderkiste-toolkit' ),
+            'description' => __( 'Navigation area.', 'wunderkiste-toolkit' ),
             'icon'        => 'menu',
         ),
     );
@@ -153,11 +153,11 @@ function seowk_register_semantic_blocks() {
         ) );
     }
 
-    // Details block mit extra attributen und Icon-Auswahl
+    // Details block with extra attributes and icon choice
     register_block_type( 'seowk/details', array(
         'api_version'     => 3,
-        'title'           => __( 'Details / Accordion', 'seo-wunderkiste' ),
-        'description'     => __( 'Aufklappbarer Bereich mit Summary und konfigurierbarem Icon.', 'seo-wunderkiste' ),
+        'title'           => __( 'Details / Accordion', 'wunderkiste-toolkit' ),
+        'description'     => __( 'Collapsible area with a summary and configurable icon.', 'wunderkiste-toolkit' ),
         'category'        => 'seowk-semantic',
         'icon'            => 'arrow-down',
         'supports'        => array(
@@ -168,7 +168,9 @@ function seowk_register_semantic_blocks() {
         'attributes'      => array(
             'cssClass'     => array( 'type' => 'string', 'default' => '' ),
             'cssId'        => array( 'type' => 'string', 'default' => '' ),
-            'summary'      => array( 'type' => 'string', 'default' => 'Mehr anzeigen' ),
+            // Empty default: the render callback falls back to the translated "Show more".
+            // Blocks saved with the old default ("Mehr anzeigen") never stored it, so they keep working.
+            'summary'      => array( 'type' => 'string', 'default' => '' ),
             'open'         => array( 'type' => 'boolean', 'default' => false ),
             'iconStyle'    => array( 'type' => 'string', 'default' => 'arrow' ),
             'iconPosition' => array( 'type' => 'string', 'default' => 'left' ),
@@ -178,8 +180,8 @@ function seowk_register_semantic_blocks() {
     // Mark block (inline)
     register_block_type( 'seowk/mark', array(
         'api_version'     => 3,
-        'title'           => __( 'Mark / Highlight', 'seo-wunderkiste' ),
-        'description'     => __( 'Hervorgehobener Text.', 'seo-wunderkiste' ),
+        'title'           => __( 'Mark / Highlight', 'wunderkiste-toolkit' ),
+        'description'     => __( 'Highlighted text.', 'wunderkiste-toolkit' ),
         'category'        => 'seowk-semantic',
         'icon'            => 'edit',
         'supports'        => array(
@@ -195,7 +197,7 @@ function seowk_register_semantic_blocks() {
 add_action( 'init', 'seowk_register_semantic_blocks' );
 
 /**
- * Universelle Render-Funktion für Wrapper-Blöcke
+ * Shared render callback for the wrapper blocks
  */
 function seowk_render_wrapper_block( $attributes, $content ) {
     $tag = isset( $attributes['tagName'] ) ? $attributes['tagName'] : 'div';
@@ -228,32 +230,32 @@ function seowk_render_details_block( $attributes, $content ) {
     $css_class = ! empty( $attributes['cssClass'] ) ? ' ' . esc_attr( $attributes['cssClass'] ) : '';
     $css_id = ! empty( $attributes['cssId'] ) ? ' id="' . esc_attr( $attributes['cssId'] ) . '"' : '';
     $open = ! empty( $attributes['open'] ) ? ' open' : '';
-    $summary = ! empty( $attributes['summary'] ) ? $attributes['summary'] : __( 'Mehr anzeigen', 'seo-wunderkiste' );
+    $summary = ! empty( $attributes['summary'] ) ? $attributes['summary'] : __( 'Show more', 'wunderkiste-toolkit' );
     
-    // Icon-Stil
+    // Icon style
     $icon_style = isset( $attributes['iconStyle'] ) ? $attributes['iconStyle'] : 'arrow';
     $icon_position = isset( $attributes['iconPosition'] ) ? $attributes['iconPosition'] : 'left';
     $icons = seowk_get_available_icons();
     $icon_data = isset( $icons[ $icon_style ] ) ? $icons[ $icon_style ] : $icons['arrow'];
     
-    // CSS-Klassen für Icon-Position
+    // CSS classes for the icon position
     $position_class = 'seowk-icon-' . $icon_position;
     
-    // Data-Attribute für JavaScript
+    // Data attributes for JavaScript
     $data_attrs = sprintf(
         ' data-icon-closed="%s" data-icon-open="%s"',
         esc_attr( $icon_data['closed'] ),
         esc_attr( $icon_data['open'] )
     );
     
-    // Icon-Span erstellen (wenn nicht "none")
+    // Build the icon span (unless "none")
     $icon_span = '';
     if ( $icon_style !== 'none' ) {
         $current_icon = ! empty( $attributes['open'] ) ? $icon_data['open'] : $icon_data['closed'];
         $icon_span = '<span class="seowk-details-icon">' . esc_html( $current_icon ) . '</span>';
     }
     
-    // Summary mit Icon je nach Position
+    // Summary with the icon depending on its position
     if ( $icon_position === 'right' ) {
         $summary_content = '<span class="seowk-details-text">' . esc_html( $summary ) . '</span>' . $icon_span;
     } else {
@@ -280,28 +282,29 @@ function seowk_render_mark_block( $attributes, $content ) {
 }
 
 /**
- * Editor Assets laden
+ * Load editor assets
  */
 function seowk_semantic_blocks_editor_assets() {
     wp_enqueue_script(
         'seowk-semantic-blocks-editor',
         SEOWK_PLUGIN_URL . 'assets/js/semantic-blocks-editor.js',
-        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-block-editor' ),
+        array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-block-editor' ),
         SEOWK_VERSION,
         true
     );
+    wp_set_script_translations( 'seowk-semantic-blocks-editor', 'wunderkiste-toolkit', SEOWK_PLUGIN_DIR . 'languages' );
     
     wp_localize_script( 'seowk-semantic-blocks-editor', 'seowkBlocks', array(
         'blocks' => array(
-            array( 'tag' => 'article', 'title' => __( 'Article', 'seo-wunderkiste' ), 'icon' => 'media-text' ),
-            array( 'tag' => 'section', 'title' => __( 'Section', 'seo-wunderkiste' ), 'icon' => 'screenoptions' ),
-            array( 'tag' => 'aside', 'title' => __( 'Aside', 'seo-wunderkiste' ), 'icon' => 'align-right' ),
-            array( 'tag' => 'header', 'title' => __( 'Header', 'seo-wunderkiste' ), 'icon' => 'arrow-up-alt' ),
-            array( 'tag' => 'footer', 'title' => __( 'Footer', 'seo-wunderkiste' ), 'icon' => 'arrow-down-alt' ),
-            array( 'tag' => 'main', 'title' => __( 'Main', 'seo-wunderkiste' ), 'icon' => 'editor-expand' ),
-            array( 'tag' => 'figure', 'title' => __( 'Figure', 'seo-wunderkiste' ), 'icon' => 'format-image' ),
-            array( 'tag' => 'address', 'title' => __( 'Address', 'seo-wunderkiste' ), 'icon' => 'location' ),
-            array( 'tag' => 'nav', 'title' => __( 'Nav', 'seo-wunderkiste' ), 'icon' => 'menu' ),
+            array( 'tag' => 'article', 'title' => __( 'Article', 'wunderkiste-toolkit' ), 'icon' => 'media-text' ),
+            array( 'tag' => 'section', 'title' => __( 'Section', 'wunderkiste-toolkit' ), 'icon' => 'screenoptions' ),
+            array( 'tag' => 'aside', 'title' => __( 'Aside', 'wunderkiste-toolkit' ), 'icon' => 'align-right' ),
+            array( 'tag' => 'header', 'title' => __( 'Header', 'wunderkiste-toolkit' ), 'icon' => 'arrow-up-alt' ),
+            array( 'tag' => 'footer', 'title' => __( 'Footer', 'wunderkiste-toolkit' ), 'icon' => 'arrow-down-alt' ),
+            array( 'tag' => 'main', 'title' => __( 'Main', 'wunderkiste-toolkit' ), 'icon' => 'editor-expand' ),
+            array( 'tag' => 'figure', 'title' => __( 'Figure', 'wunderkiste-toolkit' ), 'icon' => 'format-image' ),
+            array( 'tag' => 'address', 'title' => __( 'Address', 'wunderkiste-toolkit' ), 'icon' => 'location' ),
+            array( 'tag' => 'nav', 'title' => __( 'Nav', 'wunderkiste-toolkit' ), 'icon' => 'menu' ),
         ),
     ) );
     
@@ -395,7 +398,7 @@ function seowk_semantic_blocks_frontend_style() {
         }
     ';
     
-    // JavaScript für Icon-Wechsel
+    // JavaScript for the icon toggle
     $js = '
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll(".seowk-details").forEach(function(details) {
@@ -412,7 +415,7 @@ function seowk_semantic_blocks_frontend_style() {
     });
     ';
     
-    wp_register_style( 'seowk-semantic-blocks', false );
+    wp_register_style( 'seowk-semantic-blocks', false, array(), SEOWK_VERSION );
     wp_enqueue_style( 'seowk-semantic-blocks' );
     wp_add_inline_style( 'seowk-semantic-blocks', $css );
     

@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: Emoji Bloat entfernen
+ * MODULE: Emoji Bloat Remover
  * ------------------------------------------------------------------------- */
 
 function seowk_disable_emojis() {

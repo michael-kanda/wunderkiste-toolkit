@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: DATE SHORTCODE - SEO Wunderkiste
+ * MODULE: DATE SHORTCODE - Wunderkiste Toolkit
  * ------------------------------------------------------------------------- */
 
 function seowk_get_german_months() {
@@ -22,7 +22,7 @@ function seowk_get_date_presets() {
 }
 
 function seowk_generate_date_output( $atts ) {
-    $atts = wp_parse_args( $atts, array( 'format' => 'numeric', 'timezone' => '', 'prefix' => '', 'suffix' => '', 'wrapper' => '', 'class' => '', 'lang' => 'de' ) );
+    $atts = wp_parse_args( $atts, array( 'format' => 'numeric', 'timezone' => '', 'prefix' => '', 'suffix' => '', 'wrapper' => '', 'class' => '', 'lang' => '' ) );
     
     if ( ! empty( $atts['timezone'] ) ) {
         try { $tz = new DateTimeZone( $atts['timezone'] ); $datetime = new DateTime( 'now', $tz ); }
@@ -31,20 +31,28 @@ function seowk_generate_date_output( $atts ) {
 
     $presets = seowk_get_date_presets();
     $format = isset( $presets[ $atts['format'] ] ) ? $presets[ $atts['format'] ] : $atts['format'];
+    $lang = strtolower( (string) $atts['lang'] );
+
+    if ( 'de' === $lang || 'en' === $lang ) {
+        // Forced language: PHP gives English names, mapped to German if asked for.
+        $raw = $datetime->format( $format );
+        if ( 'de' === $lang ) {
+            $english_months = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
+            $raw = str_replace( $english_months, array_values( seowk_get_german_months() ), $raw );
+            $weekdays = seowk_get_german_weekdays();
+            $raw = str_replace( array_keys( $weekdays ), array_values( $weekdays ), $raw );
+        }
+    } else {
+        // Default: month and day names follow the site language.
+        $raw = wp_date( $format, $datetime->getTimestamp(), $datetime->getTimezone() );
+    }
+
     /*
      * Escaped right here: format() passes unknown characters through verbatim,
      * so a shortcode attribute like format="<\s\c\r\i\p\t>" would otherwise
      * emit raw markup and bypass kses for users without unfiltered_html.
      */
-    $date_output = esc_html( $datetime->format( $format ) );
-
-    if ( $atts['lang'] === 'de' ) {
-        $months = seowk_get_german_months();
-        $english_months = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
-        $date_output = str_replace( $english_months, array_values( $months ), $date_output );
-        $weekdays = seowk_get_german_weekdays();
-        $date_output = str_replace( array_keys( $weekdays ), array_values( $weekdays ), $date_output );
-    }
+    $date_output = esc_html( (string) $raw );
 
     $date_output = esc_html( $atts['prefix'] ) . $date_output . esc_html( $atts['suffix'] );
 
@@ -52,14 +60,14 @@ function seowk_generate_date_output( $atts ) {
         $allowed_tags = array( 'span', 'time', 'div', 'p', 'strong', 'em' );
         $tag = in_array( strtolower( $atts['wrapper'] ), $allowed_tags, true ) ? strtolower( $atts['wrapper'] ) : 'span';
         $attributes = ! empty( $atts['class'] ) ? ' class="' . esc_attr( $atts['class'] ) . '"' : '';
-        if ( $tag === 'time' ) { $attributes .= ' datetime="' . $datetime->format( 'c' ) . '"'; }
+        if ( $tag === 'time' ) { $attributes .= ' datetime="' . esc_attr( $datetime->format( 'c' ) ) . '"'; }
         $date_output = '<' . $tag . $attributes . '>' . $date_output . '</' . $tag . '>';
     }
     return $date_output;
 }
 
 function seowk_date_shortcode( $atts ) {
-    $atts = shortcode_atts( array( 'format' => 'numeric', 'timezone' => '', 'prefix' => '', 'suffix' => '', 'wrapper' => '', 'class' => '', 'lang' => 'de' ), $atts, 'seowk_date' );
+    $atts = shortcode_atts( array( 'format' => 'numeric', 'timezone' => '', 'prefix' => '', 'suffix' => '', 'wrapper' => '', 'class' => '', 'lang' => '' ), $atts, 'seowk_date' );
     return seowk_generate_date_output( $atts );
 }
 add_shortcode( 'seowk_date', 'seowk_date_shortcode' );

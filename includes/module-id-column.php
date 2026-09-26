@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ------------------------------------------------------------------------- *
- * MODUL: ID Column Display
+ * MODULE: ID Column Display
  * ------------------------------------------------------------------------- */
 
 function seowk_add_id_column( $columns ) {
@@ -53,12 +53,15 @@ function seowk_id_column_css() {
 add_action( 'admin_head', 'seowk_id_column_css' );
 
 function seowk_id_column_quick_copy_js() {
+    /* translators: %s: post ID */
+    $title = __( 'Click to copy: %s', 'wunderkiste-toolkit' );
     ?>
     <script>
     jQuery(document).ready(function($) {
+        var copyTitle = <?php echo wp_json_encode( $title ); ?>;
         $('.column-seowk_id strong').each(function() {
             var $this = $(this), id = $this.text();
-            $this.attr('title', 'Klicken zum Kopieren: ' + id);
+            $this.attr('title', copyTitle.replace('%s', id));
             $this.on('click', function(e) {
                 e.preventDefault();
                 if (navigator.clipboard) { navigator.clipboard.writeText(id); }
